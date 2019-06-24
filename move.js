@@ -29,6 +29,8 @@ const move = (arr, where) => {
       console.log('Invalid movement!');
     }
   }
+  let result = x + ' ' + y;
+  return result;
 };
 
 module.exports = move;
