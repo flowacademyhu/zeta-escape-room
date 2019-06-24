@@ -6,5 +6,4 @@ const generate2D = (n, m) => {
   return arr;
 };
 
-
 module.exports = generate2D;
