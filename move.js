@@ -1,7 +1,7 @@
 const move = (arr, where) => {
   let readline = require('readline-sync');
   let a = readline.keyIn('Press a key! ');
-  let place = where.split('');
+  let place = where.split(' ');
   let x = place[0];
   let y = place[1];
   if (a === 'w') {
