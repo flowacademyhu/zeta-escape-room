@@ -18,7 +18,10 @@
   "homepage": "https://github.com/flowacademyhu/zeta-escape-room#readme",
   "dependencies": {
     "axel": "0.0.3",
+<<<<<<< HEAD
     "center-align": "^1.0.1",
+=======
+>>>>>>> 9b5b46f815e081e9a255331ff6eefd4a90b18876
     "readline-sync": "^1.4.9",
     "terminal-kit": "^1.28.2"
   }
