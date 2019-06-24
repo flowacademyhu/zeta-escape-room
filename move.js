@@ -17,14 +17,14 @@ const move = (arr, where) => {
       console.log('Invalid movement!');
     }
   } else if (a === 'd') {
-    if (y < arr[x].length - 2 && arr[x][y + 1] !== 1) {
-      y = y + 1;
+    if (y < arr[x].length - 4 && arr[x][y + 1] !== 1) {
+      y = y + 2;
     } else {
       console.log('Invalid movement!');
     }
   } else if (a === 'a') {
-    if (y > 2 && arr[x][y - 1] !== 1) {
-      y = y - 1;
+    if (y > 4 && arr[x][y - 1] !== 1) {
+      y = y - 2;
     } else {
       console.log('Invalid movement!');
     }

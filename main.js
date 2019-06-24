@@ -3,7 +3,7 @@ let twArray = require('./labirint');
 let move = require('./move');
 
 console.log('szasztok');
-let array = generate2d(20, 20);
+let array = generate2d(35, 28);
 console.log(twArray(array));
 let coord = '1 1';
 
