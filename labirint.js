@@ -1,12 +1,3 @@
-const generate2D = (n, m) => {
-  let arr = new Array(n);
-  for (let i = 0; i < n; i++) {
-    arr[i] = new Array(m);
-  }
-  return arr;
-};
-
-let arr = generate2D(20, 20);
 
 const twArray = (arr) => {
   for (let i = 0; i < arr.length; i++) {
@@ -21,4 +12,4 @@ const twArray = (arr) => {
   return arr;
 };
 
-console.log(twArray(arr));
+module.exports = twArray;
