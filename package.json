@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/flowacademyhu/zeta-escape-room#readme",
   "dependencies": {
-    "readline-sync": "^1.4.9"
+    "readline-sync": "^1.4.9",
+    "terminal-kit": "^1.28.2"
   }
 }
