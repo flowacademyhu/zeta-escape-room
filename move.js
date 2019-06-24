@@ -2,8 +2,8 @@ const move = (arr, where) => {
   let readline = require('readline-sync');
   let a = readline.keyIn('Press a key! ');
   let place = where.split(' ');
-  let x = place[0];
-  let y = place[1];
+  let x = Number(place[0]);
+  let y = Number(place[1]);
   if (a === 'w') {
     if (x > 2 && arr[x - 1][y !== 1]) {
       x = x - 1;
