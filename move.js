@@ -16,13 +16,13 @@ const move = (arr, where) => {
     } else {
       console.log('Invalid movement!');
     }
-  } else if (a === 'a') {
+  } else if (a === 'd') {
     if (y < arr[x].length - 2 && arr[x][y + 1] !== 1) {
       y = y + 1;
     } else {
       console.log('Invalid movement!');
     }
-  } else if (a === 'd') {
+  } else if (a === 'a') {
     if (y > 2 && arr[x][y - 1] !== 1) {
       y = y - 1;
     } else {
