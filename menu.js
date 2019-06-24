@@ -1,14 +1,18 @@
 const menu = () => {
   var term = require('terminal-kit').terminal;
+  var center = require('center-align');
 
-  var items = [
+  let menusor = [
     'New Game',
     'Load Game',
     'Credits',
     'Exit'
+
   ];
 
-  term.singleColumnMenu(items, function (error, response) {
+  menusor = center(menusor);
+
+  term.singleColumnMenu(menusor, function (error, response) {
     term('\n').eraseLineAfter.green(
     );
     if (response.selectedIndex === 0) {
