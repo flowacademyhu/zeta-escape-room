@@ -7,28 +7,28 @@ const move = (arr, where) => {
   if (a === 'w') {
     if (x > 2 && arr[x - 1][y !== 1]) {
       x = x - 1;
-      term.bgCyan(arr[x][y] + ' ');
+      arr[x][y] = term.bgCyan(arr[x][y] + ' ');
     } else {
       console.log('Invalid movement!');
     }
   } else if (a === 's') {
     if (x < arr.length - 2 && arr[x + 1][y] !== 1) {
       x = x + 1;
-      term.bgCyan(arr[x][y] + ' ');
+      arr[x][y] = term.bgCyan(arr[x][y] + ' ');
     } else {
       console.log('Invalid movement!');
     }
   } else if (a === 'd') {
     if (y < arr[x].length - 4 && arr[x][y + 1] !== 1) {
       y = y + 2;
-      term.bgCyan(arr[x][y] + ' ');
+      arr[x][y] = term.bgCyan(arr[x][y] + ' ');
     } else {
       console.log('Invalid movement!');
     }
   } else if (a === 'a') {
     if (y > 4 && arr[x][y - 1] !== 1) {
       y = y - 2;
-      term.bgCyan(arr[x][y] + ' ');
+      arr[x][y] = term.bgCyan(arr[x][y] + ' ');
     } else {
       console.log('Invalid movement!');
     }
