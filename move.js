@@ -1,4 +1,3 @@
-let term = require('terminal-kit').terminal;
 let readline = require('readline-sync');
 let a = readline.keyIn('Press a key! ');
 const move = (arr, where, a) => {
@@ -9,6 +8,11 @@ const move = (arr, where, a) => {
       arr[x][y] = 0;
       x = x - 1;
       arr[x][y] = x;
+      arr[x][y].visibibility = true;
+      arr[x - 1][y].visibility = true;
+      arr[x + 1][y].visibility = true;
+      arr[x][y - 1].visibility = true;
+      arr[x][y + 1].visibility = true;
     } else {
       console.log('Invalid movement!');
     }
@@ -17,22 +21,37 @@ const move = (arr, where, a) => {
       arr[x][y] = 0;
       x = x + 1;
       arr[x][y] = x;
+      arr[x][y].visibibility = true;
+      arr[x - 1][y].visibility = true;
+      arr[x + 1][y].visibility = true;
+      arr[x][y - 1].visibility = true;
+      arr[x][y + 1].visibility = true;
     } else {
       console.log('Invalid movement!');
     }
   } else if (a === 'd') {
-    if (y < arr[x].length - 4 && arr[x][y + 1] !== 1) {
+    if (y < arr[x].length - 2 && arr[x][y + 1] !== 1) {
       arr[x][y] = 0;
-      y = y + 2;
+      y = y + 1;
       arr[x][y] = x;
+      arr[x][y].visibibility = true;
+      arr[x - 1][y].visibility = true;
+      arr[x + 1][y].visibility = true;
+      arr[x][y - 1].visibility = true;
+      arr[x][y + 1].visibility = true;
     } else {
       console.log('Invalid movement!');
     }
   } else if (a === 'a') {
-    if (y > 4 && arr[x][y - 1] !== 1) {
+    if (y > 2 && arr[x][y - 1] !== 1) {
       arr[x][y] = 0;
-      y = y - 2;
+      y = y - 1;
       arr[x][y] = x;
+      arr[x][y].visibibility = true;
+      arr[x - 1][y].visibility = true;
+      arr[x + 1][y].visibility = true;
+      arr[x][y - 1].visibility = true;
+      arr[x][y + 1].visibility = true;
     } else {
       console.log('Invalid movement!');
     }
