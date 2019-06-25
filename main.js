@@ -4,17 +4,17 @@ let move = require('./move');
 let validate = require('./validate');
 var term = require('terminal-kit').terminal;
 let readline = require('readline-sync');
+let generateLabirynth = require('./labgen');
 
-let array = generate2d(28, 28);
-array = twArray(array);
+let array = generateLabirynth();
 
 const labBackground = (array) => {
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array[i].length; j++) {
-      if (array[i][j] === 1) {
-        term.bgWhite(array[i][j] + ' ');
-      } else {
-        process.stdout.write('0' + ' ');
+      if (array[i][j].visibility === true) {
+        process.stdout.write(array[i][j].value);
+      } else if (array[i][j].visibility === false) {
+        process.stdout.write(' ');
       }
     }
     console.log();
@@ -23,8 +23,4 @@ const labBackground = (array) => {
 };
 
 labBackground(array);
-let coord = '1 1';
-let a = readline.keyIn('Press a key! ');
-move(array, coord, a);
-
 // validate();
