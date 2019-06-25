@@ -36,7 +36,7 @@ const move = (arr, where) => {
 
   where[0] = x;
   where[1] = y;
-  return where;
+  return [where, arr];
 };
 
 module.exports = move;
