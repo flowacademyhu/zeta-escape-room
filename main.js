@@ -12,7 +12,7 @@ const labBackground = (array) => {
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array[i].length; j++) {
       if (array[i][j].visibility === true) {
-        process.stdout.write(array[i][j].value);
+        term.bgWhite(array[i][j].value);
       } else if (array[i][j].visibility === false) {
         process.stdout.write(' ');
       }

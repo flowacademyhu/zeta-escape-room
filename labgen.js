@@ -56,7 +56,6 @@ const generateLabirynth = () => {
     array[1][24] = { value: '1', visibility: false };
     array[1][25] = { value: '1', visibility: false };
     array[1][26] = { value: '1', visibility: false };
-    array[1][27] = { value: '1', visibility: false };
 
     array[2][3] = { value: '1', visibility: false };
     array[2][4] = { value: '1', visibility: false };
@@ -82,7 +81,6 @@ const generateLabirynth = () => {
     array[2][24] = { value: '1', visibility: false };
     array[2][25] = { value: '1', visibility: false };
     array[2][26] = { value: '1', visibility: false };
-    array[2][27] = { value: '1', visibility: false };
 
     array[3][3] = { value: '1', visibility: false };
     array[3][4] = { value: '1', visibility: false };
@@ -143,7 +141,6 @@ const generateLabirynth = () => {
     array[5][23] = { value: '1', visibility: false };
 
     array[5][26] = { value: '1', visibility: false };
-    array[5][27] = { value: '1', visibility: false };
 
     array[6][3] = { value: '1', visibility: false };
     array[6][4] = { value: '1', visibility: false };
@@ -163,7 +160,6 @@ const generateLabirynth = () => {
     array[6][22] = { value: '1', visibility: false };
     array[6][23] = { value: '1', visibility: false };
     array[6][26] = { value: '1', visibility: false };
-    array[6][27] = { value: '1', visibility: false };
 
     array[7][3] = { value: '1', visibility: false };
     array[7][4] = { value: '1', visibility: false };
@@ -183,13 +179,10 @@ const generateLabirynth = () => {
     array[7][22] = { value: '1', visibility: false };
     array[7][23] = { value: '1', visibility: false };
     array[7][26] = { value: '1', visibility: false };
-    array[7][27] = { value: '1', visibility: false };
 
     array[8][26] = { value: '1', visibility: false };
-    array[8][27] = { value: '1', visibility: false };
 
     array[9][26] = { value: '1', visibility: false };
-    array[9][27] = { value: '1', visibility: false };
 
     array[10][1] = { value: '1', visibility: false };
     array[10][2] = { value: '1', visibility: false };
@@ -209,7 +202,6 @@ const generateLabirynth = () => {
     array[10][22] = { value: '1', visibility: false };
     array[10][23] = { value: '1', visibility: false };
     array[10][26] = { value: '1', visibility: false };
-    array[10][27] = { value: '1', visibility: false };
 
     array[11][1] = { value: '1', visibility: false };
     array[11][2] = { value: '1', visibility: false };
@@ -229,7 +221,6 @@ const generateLabirynth = () => {
     array[11][22] = { value: '1', visibility: false };
     array[11][23] = { value: '1', visibility: false };
     array[11][26] = { value: '1', visibility: false };
-    array[11][27] = { value: '1', visibility: false };
 
     array[12][1] = { value: '1', visibility: false };
     array[12][2] = { value: '1', visibility: false };
@@ -249,13 +240,10 @@ const generateLabirynth = () => {
     array[12][22] = { value: '1', visibility: false };
     array[12][23] = { value: '1', visibility: false };
     array[12][26] = { value: '1', visibility: false };
-    array[12][27] = { value: '1', visibility: false };
 
     array[13][26] = { value: '1', visibility: false };
-    array[13][27] = { value: '1', visibility: false };
 
     array[14][26] = { value: '1', visibility: false };
-    array[14][27] = { value: '1', visibility: false };
 
     array[15][1] = { value: '1', visibility: false };
     array[15][2] = { value: '1', visibility: false };
@@ -279,7 +267,6 @@ const generateLabirynth = () => {
     array[15][22] = { value: '1', visibility: false };
     array[15][23] = { value: '1', visibility: false };
     array[15][26] = { value: '1', visibility: false };
-    array[15][27] = { value: '1', visibility: false };
 
     array[16][1] = { value: '1', visibility: false };
     array[16][2] = { value: '1', visibility: false };
@@ -303,7 +290,6 @@ const generateLabirynth = () => {
     array[16][22] = { value: '1', visibility: false };
     array[16][23] = { value: '1', visibility: false };
     array[16][26] = { value: '1', visibility: false };
-    array[16][27] = { value: '1', visibility: false };
 
     array[17][1] = { value: '1', visibility: false };
     array[17][2] = { value: '1', visibility: false };
@@ -327,7 +313,6 @@ const generateLabirynth = () => {
     array[17][22] = { value: '1', visibility: false };
     array[17][23] = { value: '1', visibility: false };
     array[17][26] = { value: '1', visibility: false };
-    array[17][27] = { value: '1', visibility: false };
 
     array[18][1] = { value: '1', visibility: false };
     array[18][2] = { value: '1', visibility: false };
@@ -356,12 +341,10 @@ const generateLabirynth = () => {
     array[18][22] = { value: '1', visibility: false };
     array[18][23] = { value: '1', visibility: false };
     array[18][26] = { value: '1', visibility: false };
-    array[18][27] = { value: '1', visibility: false };
 
     array[19][26] = { value: '1', visibility: false };
-    array[19][27] = { value: '1', visibility: false };
+
     array[20][26] = { value: '1', visibility: false };
-    array[20][27] = { value: '1', visibility: false };
 
     array[21][1] = { value: '1', visibility: false };
     array[21][2] = { value: '1', visibility: false };
@@ -381,7 +364,6 @@ const generateLabirynth = () => {
     array[21][22] = { value: '1', visibility: false };
     array[21][23] = { value: '1', visibility: false };
     array[21][26] = { value: '1', visibility: false };
-    array[21][27] = { value: '1', visibility: false };
 
     array[22][1] = { value: '1', visibility: false };
     array[22][2] = { value: '1', visibility: false };
@@ -401,7 +383,6 @@ const generateLabirynth = () => {
     array[22][22] = { value: '1', visibility: false };
     array[22][23] = { value: '1', visibility: false };
     array[22][26] = { value: '1', visibility: false };
-    array[22][27] = { value: '1', visibility: false };
 
     array[23][1] = { value: '1', visibility: false };
     array[23][2] = { value: '1', visibility: false };
@@ -421,13 +402,10 @@ const generateLabirynth = () => {
     array[23][22] = { value: '1', visibility: false };
     array[23][23] = { value: '1', visibility: false };
     array[23][26] = { value: '1', visibility: false };
-    array[23][27] = { value: '1', visibility: false };
 
     array[24][26] = { value: '1', visibility: false };
-    array[24][27] = { value: '1', visibility: false };
 
     array[25][26] = { value: '1', visibility: false };
-    array[25][27] = { value: '1', visibility: false };
 
     array[26][1] = { value: '1', visibility: false };
     array[26][2] = { value: '1', visibility: false };
@@ -455,7 +433,6 @@ const generateLabirynth = () => {
     array[26][24] = { value: '1', visibility: false };
     array[26][25] = { value: '1', visibility: false };
     array[26][26] = { value: '1', visibility: false };
-    array[26][27] = { value: '1', visibility: false };
   };
 
   generateMaze();
