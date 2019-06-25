@@ -7,16 +7,21 @@ var term = require('terminal-kit').terminal;
 let array = generate2d(28, 28);
 array = twArray(array);
 
-for (let i = 0; i < array.length; i++) {
-  for (let j = 0; j < array[i].length; j++) {
-    if (array[i][j] === 1) {
-      term.bgWhite(array[i][j] + ' ');
-    } else {
-      process.stdout.write('0' + ' ');
+const labBackground = (array) => {
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < array[i].length; j++) {
+      if (array[i][j] === 1) {
+        term.bgWhite(array[i][j] + ' ');
+      } else {
+        process.stdout.write('0' + ' ');
+      }
     }
+    console.log();
   }
-  console.log();
-}
+  return array;
+};
+
+labBackground(array);
 
 // console.log(array);
 // let coord = '1 1';
