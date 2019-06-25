@@ -15,6 +15,8 @@ const labBackground = (array) => {
         term.bgWhite('  ');
       } else if (array[i][j].visibility === false) {
         process.stdout.write('  ');
+      } else if (array[i][j].value === 'H') {
+        process.stdout.write(' H');
       }
     }
     console.log();
@@ -22,5 +24,24 @@ const labBackground = (array) => {
   return array;
 };
 
+const hintGen = () => {
+  let count = 0;
+  while (count < 7) {
+    let rng1 = Math.floor(Math.random() * 27 + 1);
+    let rng2 = Math.floor(Math.random() * 27 + 1);
+    for (let i = 0; i < array.length; i++) {
+      for (let j = 0; j < array[i].length; j++) {
+        if (rng1 === i && rng2 === j && array[i][j].visibility === false && Number(array[i][j].value !== 1)) {
+          array[i][j] = { value: 'H', visibility: true, discovered: false, decription: 'Here is the hint.' };
+          count++;
+        }
+      }
+    }
+  }
+  return array;
+};
+console.clear();
+hintGen();
 labBackground(array);
+
 // validate();
