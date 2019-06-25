@@ -3,6 +3,7 @@ let twArray = require('./labirint');
 let move = require('./move');
 let validate = require('./validate');
 var term = require('terminal-kit').terminal;
+let readline = require('readline-sync');
 
 let array = generate2d(28, 28);
 array = twArray(array);
@@ -22,10 +23,8 @@ const labBackground = (array) => {
 };
 
 labBackground(array);
-
-// console.log(array);
-// let coord = '1 1';
-
-// console.log(move(array, coord));
+let coord = '1 1';
+let a = readline.keyIn('Press a key! ');
+move(array, coord, a);
 
 // validate();

@@ -1,6 +1,4 @@
-let term = require('terminal-kit').terminal;
-let readline = require('readline-sync');
-let a = readline.keyIn('Press a key! ');
+
 const move = (arr, where, a) => {
   let x = Number(where[0]);
   let y = Number(where[1]);
