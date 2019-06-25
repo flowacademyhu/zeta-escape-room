@@ -11,10 +11,10 @@ let array = generateLabirynth();
 const labBackground = (array) => {
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array[i].length; j++) {
-      if (array[i][j].visibility === true) {
-        term.bgWhite(array[i][j].value);
+      if (Number(array[i][j].value) === 1 && array[i][j].visibility === true) {
+        term.bgWhite('  ');
       } else if (array[i][j].visibility === false) {
-        process.stdout.write(' ');
+        process.stdout.write('  ');
       }
     }
     console.log();

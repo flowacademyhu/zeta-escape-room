@@ -1,11 +1,11 @@
 const move = (arr, where, a) => {
   let x = Number(where[0]);
   let y = Number(where[1]);
-  if (a === 'w') {
-    if (x > 2 && arr[x - 1][y] !== 1) {
-      arr[x][y] = 0;
+  if (a === 'w') { // fel
+    if (x > 2 && Number(arr[x - 1][y].value) !== 1) {
+      arr[x][y].value = '0';
       x = x - 1;
-      arr[x][y] = x;
+      arr[x][y].value = 'x';
       arr[x][y].visibibility = true;
       arr[x - 1][y].visibility = true;
       arr[x + 1][y].visibility = true;
@@ -14,11 +14,11 @@ const move = (arr, where, a) => {
     } else {
       console.log('Invalid movement!');
     }
-  } else if (a === 's') {
-    if (x < arr.length - 2 && arr[x + 1][y] !== 1) {
-      arr[x][y] = 0;
+  } else if (a === 's') { // le
+    if (x < arr.length - 2 && Number(arr[x + 1][y].value) !== 1) {
+      arr[x][y].value = '0';
       x = x + 1;
-      arr[x][y] = x;
+      arr[x][y].value = 'x';
       arr[x][y].visibibility = true;
       arr[x - 1][y].visibility = true;
       arr[x + 1][y].visibility = true;
@@ -27,11 +27,11 @@ const move = (arr, where, a) => {
     } else {
       console.log('Invalid movement!');
     }
-  } else if (a === 'd') {
-    if (y < arr[x].length - 2 && arr[x][y + 1] !== 1) {
-      arr[x][y] = 0;
+  } else if (a === 'd') { // jobbra
+    if (y < arr[x].length - 2 && Number(arr[x][y + 1].value) !== 1) {
+      arr[x][y].value = '0';
       y = y + 1;
-      arr[x][y] = x;
+      arr[x][y].value = 'x';
       arr[x][y].visibibility = true;
       arr[x - 1][y].visibility = true;
       arr[x + 1][y].visibility = true;
@@ -40,11 +40,11 @@ const move = (arr, where, a) => {
     } else {
       console.log('Invalid movement!');
     }
-  } else if (a === 'a') {
-    if (y > 2 && arr[x][y - 1] !== 1) {
-      arr[x][y] = 0;
+  } else if (a === 'a') { // balra
+    if (y > 2 && Number(arr[x][y - 1]) !== 1) {
+      arr[x][y].value = '0';
       y = y - 1;
-      arr[x][y] = x;
+      arr[x][y].value = 'x';
       arr[x][y].visibibility = true;
       arr[x - 1][y].visibility = true;
       arr[x + 1][y].visibility = true;
