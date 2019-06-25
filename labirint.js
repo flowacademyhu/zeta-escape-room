@@ -9,6 +9,10 @@ const twArray = (arr) => {
       arr[34][j] = 1;
     }
   }
+  arr[2][2] = 1;
+  arr[2][3] = 1;
+  arr[2][4] = 1;
+  arr[2][5] = 1;
   return arr;
 };
 console.log(twArray());
