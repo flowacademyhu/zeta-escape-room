@@ -1,5 +1,5 @@
 
-const twArray = (arr) => {
+const ground = (arr) => {
   for (let i = 0; i < arr.length; i++) {
     for (let j = 0; j < arr[i].length; j++) {
       arr[i][j] = 0;
@@ -11,5 +11,6 @@ const twArray = (arr) => {
   }
   return arr;
 };
-console.log(twArray());
-module.exports = twArray;
+
+module.exports = ground;
+
