@@ -1,17 +1,31 @@
 const menu = () => {
+  var term = require('terminal-kit').terminal;
+  var center = require('center-align');
+
   let menusor = [
-    '1. New Game',
-    '2. Load Game',
-    '3. Credits',
-    '4. Exit'
+    'New Game',
+    'Load Game',
+    'Credits',
+    'Exit'
+
   ];
 
-  for (let i = 0; i < menusor.length; i++) {
-    console.log(menusor[i]);
-  }
-  let readline = require('readline-sync');
-  let input = readline.keyIn();
-  return input;
+  menusor = center(menusor);
+
+  term.singleColumnMenu(menusor, function (error, response) {
+    term('\n').eraseLineAfter.green(
+    );
+    if (response.selectedIndex === 0) {
+      console.log('új játék');
+    } else if (response.selectedIndex === 1) {
+      console.log('betőt');
+    } else if (response.selectedIndex === 2) {
+      console.log('credits');
+    } else if (response.selectedIndex === 3) {
+      process.exit();
+    }
+    process.exit();
+  });
 };
 
 module.exports = menu;
