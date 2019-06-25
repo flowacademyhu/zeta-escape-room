@@ -1,6 +1,5 @@
 
 const twArray = (arr) => {
-
   for (let i = 0; i < arr.length; i++) {
     for (let j = 0; j < arr[i].length; j++) {
       arr[i][j] = 0;
@@ -244,7 +243,7 @@ const twArray = (arr) => {
   arr[15][9] = 1;
   arr[15][10] = 1;
   arr[15][11] = 1;
-  arr[15][12] = 1-;
+  arr[15][12] = 1;
   arr[15][13] = 1;
   arr[15][14] = 1;
   arr[15][15] = 1;
@@ -429,9 +428,8 @@ const twArray = (arr) => {
   arr[26][25] = 1;
   arr[26][26] = 1;
   arr[26][27] = 1;
-  {
-    return arr; }
-};
 
+  return arr;
+};
 
 module.exports = twArray;
