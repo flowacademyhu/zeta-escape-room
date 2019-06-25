@@ -28,4 +28,4 @@ const menu = () => {
   });
 };
 
-menu();
+module.exports = menu;
