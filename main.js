@@ -15,7 +15,7 @@ const labBackground = (array) => {
         term.bgWhite('  ');
       } else if (array[i][j].visibility === false) {
         process.stdout.write('  ');
-      } else if (arra[i][j].value === 'x') {
+      } else if (array[i][j].value === 'x') {
         term.bgCyan('  ');
       } else if (array[i][j].value === 'H') {
         process.stdout.write(' H');
