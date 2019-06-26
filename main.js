@@ -45,5 +45,11 @@ const hintGen = () => {
 console.clear();
 hintGen();
 labBackground(array);
+let a = readline.keyIn();
+let where = [1, 1];
+move(array, where, a);
+console.clear();
+
+labBackground(array);
 
 // validate();
