@@ -16,9 +16,9 @@ const labBackground = (array) => {
       } else if (array[i][j].visibility === false) {
         process.stdout.write('  ');
       } else if (array[i][j].value === 'x') {
-        term.bgCyan('  ');
+        term.bgRed('  ');
       } else if (array[i][j].value === 'H') {
-        process.stdout.write(' H');
+        term.bgBlack(' H');
       } else if (Number(array[i][j].value) === 0 && array[i][j].visibility === true) {
         term.bgBlack('  ');
       }
@@ -50,8 +50,13 @@ labBackground(array);
 let a = readline.keyIn();
 let where = [1, 1];
 move(array, where, a);
-console.clear();
-
-labBackground(array);
-
+while (true) {
+  labBackground(array);
+  a = readline.keyIn();
+  where = move(array, where, a);
+  if (a === 'q') {
+    process.exit();
+  }
+  // if (a === 'v' && where[2][27] ===)
+}
 // validate();

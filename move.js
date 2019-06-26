@@ -6,7 +6,7 @@ const move = (arr, where, a) => {
       arr[x][y].value = '0';
       x = x - 1;
       arr[x][y].value = 'x';
-      arr[x][y].visibibility = true;
+      arr[x][y].visibility = true;
       arr[x - 1][y].visibility = true;
       arr[x + 1][y].visibility = true;
       arr[x][y - 1].visibility = true;
@@ -19,7 +19,7 @@ const move = (arr, where, a) => {
       arr[x][y].value = '0';
       x = x + 1;
       arr[x][y].value = 'x';
-      arr[x][y].visibibility = true;
+      arr[x][y].visibility = true;
       arr[x - 1][y].visibility = true;
       arr[x + 1][y].visibility = true;
       arr[x][y - 1].visibility = true;
@@ -32,7 +32,7 @@ const move = (arr, where, a) => {
       arr[x][y].value = '0';
       y = y + 1;
       arr[x][y].value = 'x';
-      arr[x][y].visibibility = true;
+      arr[x][y].visibility = true;
       arr[x - 1][y].visibility = true;
       arr[x + 1][y].visibility = true;
       arr[x][y - 1].visibility = true;
@@ -45,7 +45,7 @@ const move = (arr, where, a) => {
       arr[x][y].value = '0';
       y = y - 1;
       arr[x][y].value = 'x';
-      arr[x][y].visibibility = true;
+      arr[x][y].visibility = true;
       arr[x - 1][y].visibility = true;
       arr[x + 1][y].visibility = true;
       arr[x][y - 1].visibility = true;
