@@ -56,8 +56,6 @@ while (true) {
   where = move(array, where, a);
   if (a === 'q') {
     process.exit();
-  } else if (a !== /[wasd]/) {
-    console.log('Invalid movement!');
   }
   // if (a === 'v' && where[2][27] ===)
 }

@@ -1,6 +1,7 @@
 const move = (arr, where, a) => {
   let x = Number(where[0]);
   let y = Number(where[1]);
+
   if (a === 'w') { // fel
     if (x > 1 && Number(arr[x - 1][y].value) !== 1) {
       arr[x][y].value = '0';
@@ -28,7 +29,9 @@ const move = (arr, where, a) => {
       console.log('Invalid movement!');
     }
   } else if (a === 'd') { // jobbra
-    if (y < arr[x].length - 1 && Number(arr[x][y + 1].value) !== 1) {
+    if ((y === 26 && x === 3) || (y === 26 && x === 4)) {
+      console.log('Invalid movement!'); // validate melletti mezők
+    } else if (y < arr[x].length - 1 && Number(arr[x][y + 1].value) !== 1) {
       arr[x][y].value = '0';
       y = y + 1;
       arr[x][y].value = 'x';
