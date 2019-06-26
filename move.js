@@ -41,7 +41,7 @@ const move = (arr, where, a) => {
       console.log('Invalid movement!');
     }
   } else if (a === 'a') { // balra
-    if (y > 1 && Number(arr[x][y - 1]) !== 1) {
+    if (y > 1 && Number(arr[x][y - 1].value) !== 1) {
       arr[x][y].value = '0';
       y = y - 1;
       arr[x][y].value = 'x';
