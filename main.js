@@ -35,7 +35,7 @@ const hintGen = () => {
     let rng2 = Math.floor(Math.random() * 27 + 1);
     for (let i = 0; i < array.length; i++) {
       for (let j = 0; j < array[i].length; j++) {
-        if (rng1 === i && rng2 === j && array[i][j].visibility === false && Number(array[i][j].value !== 1)) {
+        if (rng1 === i && rng2 === j && array[i][j].visibility === false && Number(array[i][j].value) !== 1) {
           array[i][j] = { value: 'H', visibility: true, discovered: false, decription: 'Here is the hint.' };
           count++;
         }
@@ -56,6 +56,8 @@ while (true) {
   where = move(array, where, a);
   if (a === 'q') {
     process.exit();
+  } else if (a !== /[wasd]/) {
+    console.log('Invalid movement!');
   }
   // if (a === 'v' && where[2][27] ===)
 }
