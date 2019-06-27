@@ -9,9 +9,8 @@ const validate = (str) => {
     let password = 'cica1';
     console.clear();
     if (str === password) {
-      boolean = true;
       console.log('Congratulations. You are free to leave.');
-      return boolean;
+      return !boolean;
     } else {
       if (life === 1) {
         return boolean;
