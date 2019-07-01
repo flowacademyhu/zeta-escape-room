@@ -32,7 +32,7 @@ const generate2d = (n, m) => {
 const fill2d = (array) => {
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array[i].length; j++) {
-      array[i][j] = { value: '1', visibility: false };
+      array[i][j] = { value: '1', visibility: false, visited: true };
       if (i % 2 !== 0 && j % 2 !== 0) {
         array[i][j] = { value: '0', visibility: false, visited: false };
       }
@@ -89,15 +89,19 @@ const mazeGen = () => {
     switch (r) {
       case 1:
         l[x - 1][y] = { value: '0', visibility: false, visited: true };
+        l[x][y].visited = true;
         break;
       case 2:
         l[x + 1][y] = { value: '0', visibility: false, visited: true };
+        l[x][y].visited = true;
         break;
       case 3:
         l[x][y + 1] = { value: '0', visibility: false, visited: true };
+        l[x][y].visited = true;
         break;
       case 4:
         l[x][y - 1] = { value: '0', visibility: false, visited: true };
+        l[x][y].visited = true;
         break;
       default:
         break;
