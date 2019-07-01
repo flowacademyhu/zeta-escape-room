@@ -43,7 +43,7 @@ const fill2d = (array) => {
 };
 
 const neighbour = () => {
-  if ((x < maze.length - 2 && maze[x + 2][y].visited === true) && (x > 2 && maze[x - 2][y].visited === true) && (y > 2 && maze[x][y - 2].visited === true) && (y < maze.length - 2 && maze[x][y + 2].visited === true)) {
+  if ((x < maze.length - 4 && maze[x + 2][y].visited === true) && (x > 3 && maze[x - 2][y].visited === true) && (y > 3 && maze[x][y - 2].visited === true) && (y < maze.length - 4 && maze[x][y + 2].visited === true)) {
     for (let i = 0; i < maze.length; i++) {
       for (let j = 0; j < maze.length; j++) {
         if (maze[i][j].visited === false) {
@@ -132,11 +132,15 @@ const mazeGen = () => {
   }
   if (counter === 0) {
     process.exit();
-  } else {
+  } else if (x === 1 || y === 1 || x === maze.length - 2 || y === maze.length - 2 && counter !== 0) {
     console.clear();
-    labBackground(maze);
     neighbour();
     mazeGen();
+    labBackground(maze);
+  } else {
+    console.clear();
+    mazeGen();
+    labBackground(maze);
   }
 };
 
