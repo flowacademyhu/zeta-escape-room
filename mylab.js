@@ -88,20 +88,62 @@ const mazeGen = () => {
     console.log(x, y);
     switch (r) {
       case 1:
-        l[x - 1][y] = { value: '0', visibility: false, visited: true };
-        l[x][y].visited = true;
+        if (l[x - 2][y].value === '0' && l[x - 2][y].visited === false) {
+          l[x - 1][y] = { value: '0', visibility: false, visited: true };
+          l[x][y].visited = true;
+        } else if (l[x - 1][y].visited === true && l[x + 2][y].visited === false) {
+          l[x + 1][y] = { value: '0', visibility: false, visited: true };
+          l[x][y].visited = true;
+        } else if (l[x][y - 2].visited === false) {
+          l[x][y - 1] = { value: '0', visibility: false, visited: true };
+          l[x][y].visited = true;
+        } else { l[x][y + 1] = { value: '0', visibility: false, visited: true }; }
+
         break;
       case 2:
-        l[x + 1][y] = { value: '0', visibility: false, visited: true };
-        l[x][y].visited = true;
+        if (l[x + 2][y].value === '0' && l[x + 2][y].visited === false) {
+          l[x + 1][y] = { value: '0', visibility: false, visited: true };
+          l[x][y].visited = true;
+        } else if (l[x + 1][y].visited === true && l[x - 2][y].visited === false) {
+          l[x - 1][y] = { value: '0', visibility: false, visited: true };
+          l[x][y].visited = true;
+        } else if (l[x][y - 2].visited === false) {
+          l[x][y - 1] = { value: '0', visibility: false, visited: true };
+          l[x][y].visited = true;
+        } else { l[x][y + 1] = { value: '0', visibility: false, visited: true }; }
+
         break;
       case 3:
-        l[x][y + 1] = { value: '0', visibility: false, visited: true };
-        l[x][y].visited = true;
+        if (l[x][y + 2].value === '0' && l[x][y + 2].visited === false) {
+          l[x][y + 1] = { value: '0', visibility: false, visited: true };
+          l[x][y].visited = true;
+        } else if (l[x][y - 1].visited === true && l[x][y + 2].visited === false) {
+          l[x][y + 1] = { value: '0', visibility: false, visited: true };
+          l[x][y].visited = true;
+        } else if (l[x + 1][y].visited === true && l[x - 2][y].visited === false) {
+          l[x - 1][y] = { value: '0', visibility: false, visited: true };
+          l[x][y].visited = true;
+        } else if (l[x - 1][y].visited === true && l[x + 2][y].visited === false) {
+          l[x + 1][y] = { value: '0', visibility: false, visited: true };
+          l[x][y].visited = true;
+        }
+
         break;
       case 4:
-        l[x][y - 1] = { value: '0', visibility: false, visited: true };
-        l[x][y].visited = true;
+        if (l[x][y - 2].value === '0' && l[x][y - 2].visited === false) {
+          l[x][y - 1] = { value: '0', visibility: false, visited: true };
+          l[x][y].visited = true;
+        } else if (l[x][y + 1].visited === true && l[x][y - 2].visited === false) {
+          l[x][y - 1] = { value: '0', visibility: false, visited: true };
+          l[x][y].visited = true;
+        } else if (l[x + 1][y].visited === true && l[x - 2][y].visited === false) {
+          l[x - 1][y] = { value: '0', visibility: false, visited: true };
+          l[x][y].visited = true;
+        } else if (l[x - 1][y].visited === true && l[x + 2][y].visited === false) {
+          l[x + 1][y] = { value: '0', visibility: false, visited: true };
+          l[x][y].visited = true;
+        }
+
         break;
       default:
         break;
