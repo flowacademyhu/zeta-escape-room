@@ -5,7 +5,8 @@ let validate = require('./validate');
 var term = require('terminal-kit').terminal;
 let readline = require('readline-sync');
 let generateLabirynth = require('./labgen');
-
+let torchGen = require('./torch');
+let torchUse = require('./torch-use');
 let array = generateLabirynth();
 
 const labBackground = (array) => {
@@ -19,6 +20,8 @@ const labBackground = (array) => {
         term.bgRed('  ');
       } else if (array[i][j].value === 'H') {
         term.bgBlack(' H');
+      } else if (array[i][j].value === 'TO') {
+        term.bgYellow('TO');
       } else if (Number(array[i][j].value) === 0 && array[i][j].visibility === true) {
         term.bgBlack('  ');
       }
@@ -44,16 +47,20 @@ const hintGen = () => {
   }
   return array;
 };
+
 console.clear();
 hintGen();
+torchGen(array);
 labBackground(array);
 let a = readline.keyIn();
 let where = [1, 1];
 move(array, where, a);
+
 while (true) {
   labBackground(array);
   a = readline.keyIn();
   where = move(array, where, a);
+  // torchUse(array, where);
   if (a === 'q') {
     process.exit();
   }
