@@ -76,48 +76,53 @@ const mazeGen = () => {
   console.log(stack.length);
   if (Number(stack.length) === 1) {
     process.exit();
-  } else if (x < 4 && l[x + 2][y].value === '0') {
+  } else if (x < 2 && l[x + 2][y].value === '0') {
     l[x + 1][y] = { value: '0', visibility: false, visited: true };
-  } else if (y < 4 && l[x][y + 2].value === '0') {
+    l[x][y].visited = true;
+  } else if (y < 2 && l[x][y + 2].value === '0') {
     l[x][y + 1] = { value: '0', visibility: false, visited: true };
-  } else if (x > 9 && l[x - 2][y].value === '0') {
+    l[x][y].visited = true;
+  } else if (x > 10 && l[x - 2][y].value === '0') {
     l[x - 1][y] = { value: '0', visibility: false, visited: true };
-  } else if (y > 9 && l[x][y - 2].value === '0') {
+    l[x][y].visited = true;
+  } else if (y > 10 && l[x][y - 2].value === '0') {
     l[x][y - 1] = { value: '0', visibility: false, visited: true };
-  } else if (((r === 1 && l[x - 2][y].value === '0' && l[x - 2][y].visited === false) || (r === 2 && l[x + 2][y].value === '0' && l[x + 2][y].visited === false) || (r === 3 && l[x][y + 2].value === '0' && l[x][y + 2].visited === false) || (r === 4 && l[x][y - 2].value === '0' && l[x][y - 2].visited === false))) {
+    l[x][y].visited = true;
+  } else {
     console.log(x, y);
     switch (r) {
       case 1:
         if (l[x - 2][y].value === '0' && l[x - 2][y].visited === false) {
           l[x - 1][y] = { value: '0', visibility: false, visited: true };
           l[x][y].visited = true;
-        } else if (l[x - 1][y].visited === true && l[x + 2][y].visited === false) {
+        } else if (l[x - 1][y].visited === true && l[x - 1][y].value === '0' && l[x + 2][y].visited === false) {
           l[x + 1][y] = { value: '0', visibility: false, visited: true };
           l[x][y].visited = true;
         } else if (l[x][y - 2].visited === false) {
           l[x][y - 1] = { value: '0', visibility: false, visited: true };
           l[x][y].visited = true;
-        } else { l[x][y + 1] = { value: '0', visibility: false, visited: true }; }
-
+        } else {
+          l[x][y + 1] = { value: '0', visibility: false, visited: true };
+          l[x][y].visited = true;
+        }
         break;
       case 2:
         if (l[x + 2][y].value === '0' && l[x + 2][y].visited === false) {
           l[x + 1][y] = { value: '0', visibility: false, visited: true };
           l[x][y].visited = true;
-        } else if (l[x + 1][y].visited === true && l[x - 2][y].visited === false) {
+        } else if (l[x + 1][y].visited === true && l[x + 1][y].value === '0' && l[x - 2][y].visited === false) {
           l[x - 1][y] = { value: '0', visibility: false, visited: true };
           l[x][y].visited = true;
         } else if (l[x][y - 2].visited === false) {
           l[x][y - 1] = { value: '0', visibility: false, visited: true };
           l[x][y].visited = true;
         } else { l[x][y + 1] = { value: '0', visibility: false, visited: true }; }
-
         break;
       case 3:
         if (l[x][y + 2].value === '0' && l[x][y + 2].visited === false) {
           l[x][y + 1] = { value: '0', visibility: false, visited: true };
           l[x][y].visited = true;
-        } else if (l[x][y - 1].visited === true && l[x][y + 2].visited === false) {
+        } else if (l[x][y - 1].visited === true && l[x][y - 1].value === '0' && l[x][y + 2].visited === false) {
           l[x][y + 1] = { value: '0', visibility: false, visited: true };
           l[x][y].visited = true;
         } else if (l[x + 1][y].visited === true && l[x - 2][y].visited === false) {
@@ -133,7 +138,7 @@ const mazeGen = () => {
         if (l[x][y - 2].value === '0' && l[x][y - 2].visited === false) {
           l[x][y - 1] = { value: '0', visibility: false, visited: true };
           l[x][y].visited = true;
-        } else if (l[x][y + 1].visited === true && l[x][y - 2].visited === false) {
+        } else if (l[x][y + 1].visited === true && l[x][y + 1].value === '0' && l[x][y - 2].visited === false) {
           l[x][y - 1] = { value: '0', visibility: false, visited: true };
           l[x][y].visited = true;
         } else if (l[x + 1][y].visited === true && l[x - 2][y].visited === false) {
@@ -143,7 +148,6 @@ const mazeGen = () => {
           l[x + 1][y] = { value: '0', visibility: false, visited: true };
           l[x][y].visited = true;
         }
-
         break;
       default:
         break;
