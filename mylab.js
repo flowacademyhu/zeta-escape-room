@@ -50,7 +50,7 @@ const draw2d = (array) => {
     console.log(temp);
   }
 };
-let l = generate2d(13, 13);
+let l = generate2d(29, 29);
 l = fill2d(l);
 // draw2d(l);
 
@@ -70,23 +70,42 @@ const stackArray = () => {
 let stack = stackArray();
 let x = stack[0][0];
 let y = stack[0][1];
-let r = Math.floor(Math.random() * 4 + 1);
-
+let r = Math.floor(Math.random() * 2 + 1);
+let n = Math.floor(Math.random() * 3 + 1);
 const mazeGen = () => {
   console.log(stack.length);
   if (Number(stack.length) === 1) {
     process.exit();
-  } else if (x < 2 && l[x + 2][y].value === '0') {
-    l[x + 1][y] = { value: '0', visibility: false, visited: true };
-    l[x][y].visited = true;
-  } else if (y < 2 && l[x][y + 2].value === '0') {
-    l[x][y + 1] = { value: '0', visibility: false, visited: true };
-    l[x][y].visited = true;
-  } else if (x > 10 && l[x - 2][y].value === '0') {
-    l[x - 1][y] = { value: '0', visibility: false, visited: true };
-    l[x][y].visited = true;
-  } else if (y > 10 && l[x][y - 2].value === '0') {
+  } else if (x < 2 && (l[x + 2][y].value === '0' || l[x][y + 2].value === '0' || l[x][y - 2].value === '0')) {
+    if (l[x + 2][y].value === '0') {
+      l[x + 1][y] = { value: '0', visibility: false, visited: true };
+      l[x][y].visited = true;
+    } else if (l[x][y + 2].value === '0') {
+      l[x][y + 1] = { value: '0', visibility: false, visited: true };
+      l[x][y].visited = true;
+    }
+  } else if (y < 2 && (l[x][y + 2].value === '0' || l[x + 2][y].value === '0')) {
+    if (l[x][y + 2].value === '0') {
+      l[x][y + 1] = { value: '0', visibility: false, visited: true };
+      l[x][y].visited = true;
+    } else {
+      l[x + 1][y] = { value: '0', visibility: false, visited: true };
+      l[x][y].visited = true;
+    }
+  } else if (x > 26 && (l[x - 2][y].value === '0')) {
+    if (n === 1) {
+      l[x][y - 1] = { value: '0', visibility: false, visited: true };
+      l[x - 1][y] = { value: '0', visibility: false, visited: true };
+      l[x][y].visited = true;
+    } else {
+      l[x - 1][y] = { value: '0', visibility: false, visited: true };
+
+      l[x][y + 1] = { value: '0', visibility: false, visited: true };
+      l[x][y].visited = true;
+    }
+  } else if (y > 26 && l[x][y - 2].value === '0') {
     l[x][y - 1] = { value: '0', visibility: false, visited: true };
+    l[x - 1][y] = { value: '0', visibility: false, visited: true };
     l[x][y].visited = true;
   } else {
     console.log(x, y);
@@ -95,7 +114,7 @@ const mazeGen = () => {
         if (l[x - 2][y].value === '0' && l[x - 2][y].visited === false) {
           l[x - 1][y] = { value: '0', visibility: false, visited: true };
           l[x][y].visited = true;
-        } else if (l[x - 1][y].visited === true && l[x - 1][y].value === '0' && l[x + 2][y].visited === false) {
+        } else if (l[x - 1][y].visited === true && l[x + 2][y].value === '0' && l[x + 2][y].visited === false) {
           l[x + 1][y] = { value: '0', visibility: false, visited: true };
           l[x][y].visited = true;
         } else if (l[x][y - 2].visited === false) {
@@ -110,7 +129,7 @@ const mazeGen = () => {
         if (l[x + 2][y].value === '0' && l[x + 2][y].visited === false) {
           l[x + 1][y] = { value: '0', visibility: false, visited: true };
           l[x][y].visited = true;
-        } else if (l[x + 1][y].visited === true && l[x + 1][y].value === '0' && l[x - 2][y].visited === false) {
+        } else if (l[x + 1][y].visited === true && l[x - 2][y].value === '0' && l[x - 2][y].visited === false) {
           l[x - 1][y] = { value: '0', visibility: false, visited: true };
           l[x][y].visited = true;
         } else if (l[x][y - 2].visited === false) {
@@ -122,7 +141,7 @@ const mazeGen = () => {
         if (l[x][y + 2].value === '0' && l[x][y + 2].visited === false) {
           l[x][y + 1] = { value: '0', visibility: false, visited: true };
           l[x][y].visited = true;
-        } else if (l[x][y - 1].visited === true && l[x][y - 1].value === '0' && l[x][y + 2].visited === false) {
+        } else if (l[x][y - 1].visited === true && l[x][y + 2].value === '0' && l[x][y + 2].visited === false) {
           l[x][y + 1] = { value: '0', visibility: false, visited: true };
           l[x][y].visited = true;
         } else if (l[x + 1][y].visited === true && l[x - 2][y].visited === false) {
@@ -134,11 +153,11 @@ const mazeGen = () => {
         }
 
         break;
-      case 4:
+      /* case 4:
         if (l[x][y - 2].value === '0' && l[x][y - 2].visited === false) {
           l[x][y - 1] = { value: '0', visibility: false, visited: true };
           l[x][y].visited = true;
-        } else if (l[x][y + 1].visited === true && l[x][y + 1].value === '0' && l[x][y - 2].visited === false) {
+        } else if (l[x][y + 1].visited === true && l[x][y - 2].value === '0' && l[x][y - 2].visited === false) {
           l[x][y - 1] = { value: '0', visibility: false, visited: true };
           l[x][y].visited = true;
         } else if (l[x + 1][y].visited === true && l[x - 2][y].visited === false) {
@@ -148,13 +167,14 @@ const mazeGen = () => {
           l[x + 1][y] = { value: '0', visibility: false, visited: true };
           l[x][y].visited = true;
         }
-        break;
+        break; */
       default:
         break;
     }
   }
 
   r = Math.floor(Math.random() * 4 + 1);
+  n = Math.floor(Math.random() * 2 + 1);
   stack.shift();
   x = stack[0][0];
   y = stack[0][1];
@@ -162,3 +182,6 @@ const mazeGen = () => {
   mazeGen();
 };
 mazeGen();
+if (a === 'q') {
+  process.exit();
+}
