@@ -109,12 +109,12 @@ const ghostTargeted = (x, y) => {
 };
 
 const ghostMove = (x, y) => {
-  if (ghostSee(x, y) === true) {
+  if (ghostSee(x, y)) {
     ghostTargeted(x, y);
-  } else if (ghostSee(x, y) === false) {
+  } else {
     ghostRandom(x, y);
   }
-  ghostMove;
+  ghostMove(x, y);
 };
 
 module.exports = ghostSee;
