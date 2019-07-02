@@ -49,20 +49,13 @@ const torchUse = (array, where, range) => {
       d++;
     }
   }
+  return true;
 };
 
 const torchUpTime = (array, where) => {
   let x = Number(where[0]);
   let y = Number(where[1]);
   let torchLifeTime = 5;
-  if (torchUse()) {
-    if (x > 2 && x < array.length - 2 && y > 2 && y < array.length - 2) {
-      array[x][y].visibility = true;
-      while (torchLifeTime > 5) {
-        torchLifeTime--;
-      }
-    }
-  }
 };
 
 module.exports = {
