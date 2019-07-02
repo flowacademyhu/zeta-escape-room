@@ -71,7 +71,7 @@ const ghostMove= (x, y) => {
       } else {
         ghostMove(x, y);
       }
-    } else if (a === 'a') { // balra
+    } else if (a === 4) { // balra
       if (y > 1 && Number(arr[x][y - 1].value) !== 1) {
         arr[x][y].value = '0';
         y = y - 1;
