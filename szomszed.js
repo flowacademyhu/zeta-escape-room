@@ -1,43 +1,44 @@
 const neighbour = () => {
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arr[i].length; j++) {
-//bal felső
-if (x===1 && y===1 && (arr[x+2][y].visited===false || arr[x][y+2].visited===false)) {
-    return true;
-} 
-// jobb felső
-else if (x===1 && y===arr.length-2 && (arr[x+2][y].visited===false || arr[x][y-2].visited===false)) {
-    return true;
-    }
-    // bal alsó
-    else if (x===arr.length-2 && y===1 && (arr[x-2][y].visited===false || arr[x][y+2].visited===false)) {
-    return true;
-    }
-    // jobb alsó
-else if (x===arr.length-2 && y===arr.length-2 && (arr[x-2][y].visited===false || arr[x][y-2].visited===false)) {
-   return true;
-    }
-    //felső sor többi eleme
-    else if (x===1 && y>1 && y<arr.length-2 && (arr[x+2][y].visited===false || arr[x][y+2].visited===false || arr[x][y-2].visited===false)) {
+  for (let i = 0; i < maze.length; i++) {
+    for (let j = 0; j < maze[i].length; j++) {
+      // bal felső
+      if (x === 1 && y === 1 && (maze[x + 2][y].visited === false || maze[x][y + 2].visited === false)) {
         return true;
-    }
-     //alsó sor többi eleme
-     else if (x===arr.length-2 && y>1 && y<arr.length-2 && (arr[x-2][y].visited===false || arr[x][y+2].visited===false || arr[x][y-2].visited===false)) {
+      }
+      // jobb felső
+      else if (x === 1 && y === maze.length - 2 && (maze[x + 2][y].visited === false || maze[x][y - 2].visited === false)) {
         return true;
-    }
-     //jobb oszlop többi eleme
-     else if (y===1 && x>1 && x<arr.length-2 && (arr[x+2][y].visited===false || arr[x-2][y].visited===false || arr[x][y+2].visited===false)) {
+      }
+      // bal alsó
+      else if (x === maze.length - 2 && y === 1 && (maze[x - 2][y].visited === false || maze[x][y + 2].visited === false)) {
         return true;
-    }
-    //bal oszlop többi eleme
-    else if (y===arr.length-2 && x>1 && x<arr.length-2 && (arr[x+2][y].visited===false || arr[x-2][y].visited===false || arr[x][y-2].visited===false)) {
-       return true;
-    }
-    //összes többi elem
-    else if (y>1 && y<arr.length-2 && x>1 && x<arr.length-2 && (arr[x+2][y].visited===false || arr[x-2][y].visited===false || arr[x][y-2].visited===false || arr[x][y+2].visited===false)) {
+      }
+      // jobb alsó
+      else if (x === maze.length - 2 && y === maze.length - 2 && (maze[x - 2][y].visited === false || maze[x][y - 2].visited === false)) {
         return true;
-    } else {
-return false;
-}
+      }
+      // felső sor többi eleme
+      else if (x === 1 && y > 1 && y < maze.length - 2 && (maze[x + 2][y].visited === false || maze[x][y + 2].visited === false || maze[x][y - 2].visited === false)) {
+        return true;
+      }
+      // alsó sor többi eleme
+      else if (x === maze.length - 2 && y > 1 && y < maze.length - 2 && (maze[x - 2][y].visited === false || maze[x][y + 2].visited === false || maze[x][y - 2].visited === false)) {
+        return true;
+      }
+      // jobb oszlop többi eleme
+      else if (y === 1 && x > 1 && x < maze.length - 2 && (maze[x + 2][y].visited === false || maze[x - 2][y].visited === false || maze[x][y + 2].visited === false)) {
+        return true;
+      }
+      // bal oszlop többi eleme
+      else if (y === maze.length - 2 && x > 1 && x < maze.length - 2 && (maze[x + 2][y].visited === false || maze[x - 2][y].visited === false || maze[x][y - 2].visited === false)) {
+        return true;
+      }
+      // összes többi elem
+      else if (y > 1 && y < maze.length - 2 && x > 1 && x < maze.length - 2 && (maze[x + 2][y].visited === false || maze[x - 2][y].visited === false || maze[x][y - 2].visited === false || arr[x][y + 2].visited === false)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   }
 };
