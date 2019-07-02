@@ -1,49 +1,70 @@
-const ghostSee = (x, y) => {
-  if (maze[x - 1][y].value !== '1') {
+let my = 0;
+let mx = 0;
+
+const seeUp = (maze, x, y) => {
+  if (Number(maze[x - 1][y].value) !== 1) {
     if (maze[x - 1][y].value === 'x') {
-      let mx = x - 1;
-      let my = y;
+      mx = x - 1;
+      my = y;
       return true;
     } else {
-      ghostSee(x - 1, y);
-    }
-  } else {
-    return false;
-  }
-  if (maze[x + 1][y].value !== '1') {
-    if (maze[x + 1][y].value === 'x') {
-      let mx = x + 1;
-      let my = y;
-    } else {
-      ghostSee(x + 1, y);
-    }
-  } else {
-    return false;
-  }
-  if (maze[x][y - 1].value !== '1') {
-    if (maze[x][y - 1].value === 'x') {
-      let mx = x;
-      let my = y - 1;
-    } else {
-      ghostSee(x, y - 1);
-    }
-  } else {
-    return false;
-  }
-
-  if (maze[x][y + 1].value !== '1') {
-    if (maze[x][y + 1].value === 'x') {
-      let mx = x;
-      let my = y + 1;
-    } else {
-      ghostSee(x, y + 1);
+      seeUp(maze, x - 1, y);
     }
   } else {
     return false;
   }
 };
 
-const ghostRandom = (x, y) => {
+const seeDown = (maze, x, y) => {
+  if (Number(maze[x + 1][y].value) !== 1) {
+    if (maze[x + 1][y].value === 'x') {
+      mx = x + 1;
+      my = y;
+      return true;
+    } else {
+      seeDown(maze, x + 1, y);
+    }
+  } else {
+    return false;
+  }
+};
+
+const seeLeft = (maze, x, y) => {
+  if (Number(maze[x][y - 1].value) !== 1) {
+    if (maze[x][y - 1].value === 'x') {
+      mx = x;
+      my = y - 1;
+      return true;
+    } else {
+      seeLeft(maze, x, y - 1);
+    }
+  } else {
+    return false;
+  }
+};
+
+const seeRight = (maze, x, y) => {
+  if (Number(maze[x][y + 1].value) !== 1) {
+    if (maze[x][y + 1].value === 'x') {
+      mx = x;
+      my = y + 1;
+      return true;
+    } else {
+      seeRight(maze, x, y + 1);
+    }
+  } else {
+    return false;
+  }
+};
+
+const ghostSee = (maze, x, y) => {
+  seeUp(maze, x, y);
+  seeDown(maze, x, y);
+  seeLeft(maze, x, y);
+  seeRight(maze, x, y);
+};
+
+const ghostRandom = (maze, x, y) => {
   let a = Math.floor(Math.random() * 4) + 1;
 
   if (a === 1) { // fel
@@ -51,38 +72,30 @@ const ghostRandom = (x, y) => {
       maze[x][y].value = '0';
       x = x - 1;
       maze[x][y].value = 'g';
-    } else {
-      ghostMove(x, y);
     }
   } else if (a === 2) { // le
     if (x < maze.length - 1 && Number(maze[x + 1][y].value) !== 1) {
       maze[x][y].value = '0';
       x = x + 1;
       maze[x][y].value = 'g';
-    } else {
-      ghostMove(x, y);
     }
   } else if (a === 3) { // jobbra
     if (y < maze[x].length - 1 && Number(maze[x][y + 1].value) !== 1) {
       maze[x][y].value = '0';
       y = y + 1;
       maze[x][y].value = 'g';
-    } else {
-      ghostMove(x, y);
     }
   } else if (a === 4) { // balra
     if (y > 1 && Number(maze[x][y - 1].value) !== 1) {
       maze[x][y].value = '0';
       y = y - 1;
       maze[x][y].value = 'g';
-    } else {
-      ghostMove(x, y);
     }
   }
-  return { x, y };
+  return [x, y];
 };
 
-const ghostTargeted = (x, y) => {
+const ghostTargeted = (maze, x, y) => {
   while (x !== mx) {
     if (x < mx) {
       maze[x][y] = 0;
@@ -108,16 +121,24 @@ const ghostTargeted = (x, y) => {
   return { x, y };
 };
 
-const ghostMove = (x, y) => {
-  if (ghostSee(x, y)) {
-    ghostTargeted(x, y);
+/* const ghostMove = (maze, x, y) => {
+  if (ghostSee(maze, x, y)) {
+    ghostTargeted(maze, x, y);
   } else {
-    ghostRandom(x, y);
+    ghostRandom(maze, x, y);
   }
-  ghostMove(x, y);
-};
-
-module.exports = ghostSee;
-module.exports = ghostRandom;
-module.exports = ghostTargeted;
-module.exports = ghostMove;
+  ghostMove(maze, x, y);
+}; */
+let gx = 15;
+let gy = 15;
+setInterval((m) => {
+  console.clear();
+  labBackground(m);
+  if (ghostSee(m, gx, gy)) {
+    ghostTargeted(m, gx, gy);
+  } else {
+    let arr = ghostRandom(m, gx, gy);
+    gx = arr[0];
+    gy = arr[1];
+  }
+}, 150, maze);
