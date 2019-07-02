@@ -43,7 +43,7 @@ const ghostSee = (x, y) => {
   }
 };
 
-const ghostMove = (x, y) => {
+const ghostRandom = (x, y) => {
   let a = Math.floor(Math.random() * 4) + 1;
 
   if (a === 1) { // fel
@@ -82,5 +82,42 @@ const ghostMove = (x, y) => {
   return { x, y };
 };
 
+const ghostTargeted = (x, y) => {
+  while (x !== mx) {
+    if (x < mx) {
+      maze[x][y] = 0;
+      x = x + 1;
+      maze[x][y] = 'g';
+    } else if (x > mx) {
+      maze[x][y] = 0;
+      x = x - 1;
+      maze[x][y] = 'g';
+    }
+  }
+  while (y !== my) {
+    if (y < my) {
+      maze[x][y] = '0';
+      y = y + 1;
+      maze[x][y] = 'g';
+    } else if (y > my) {
+      maze[x][y] = '0';
+      y = y - 1;
+      maze[x][y] = 'g';
+    }
+  }
+  return { x, y };
+};
+
+const ghostMove = (x, y) => {
+  if (ghostSee(x, y) === true) {
+    ghostTargeted(x, y);
+  } else if (ghostSee(x, y) === false) {
+    ghostRandom(x, y);
+  }
+  ghostMove;
+};
+
 module.exports = ghostSee;
+module.exports = ghostRandom;
+module.exports = ghostTargeted;
 module.exports = ghostMove;
