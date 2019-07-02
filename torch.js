@@ -20,31 +20,34 @@ const torchUse = (array, where, range) => {
   let x = Number(where[0]);
   let y = Number(where[1]);
   let c = 0;
+  let d = 0;
   let tx = x - range;
-  // let ty = y - range;
+  let txm = x + range;
   let tymin;
   let tymax;
-
   if (array[x][y].used === true) {
     for (let i = tx; i <= x; i++) {
       tx = x - range + c;
       tymin = y - c;
       tymax = y + c;
       for (let ty = tymin; ty <= tymax; ty++) {
-        array[tx][ty].visibility = true;
-        console.log(c, tx, ty);
+        if (tx < array.length && tx > 1 && ty > 1 && ty < array.length) {
+          array[tx][ty].visibility = true;
+        }
       }
-
       c++;
     }
-    /* for (let j = ty; j <= y + range; j++) {
-      ty = y - range + d;
-      array[x][ty].visibility = true;
+    for (let i = txm; i >= x; i--) {
+      txm = x + range - d;
+      tymin = y - d;
+      tymax = y + d;
+      for (let ty = tymin; ty <= tymax; ty++) {
+        if (txm < array.length && txm > 1 && ty > 1 && ty < array.length) {
+          array[txm][ty].visibility = true;
+        }
+      }
       d++;
     }
-    tymin = y - range;
-    tymax = y + range;
-  */
   }
 };
 
