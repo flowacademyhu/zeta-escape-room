@@ -150,31 +150,6 @@ const mazeGen = (x, y) => {
         }
         break;
     }
-    const trapGen = (maze) => {
-      let n = 0;
-      while (n < 3) {
-        let a = Math.floor(Math.random() * maze.length);
-        let b = Math.floor(Math.random() * maze[a].length);
-        if (Number(maze[a][b].value) === 0) {
-          maze[a][b].value = 'T';
-          n++;
-        }
-      }
-      const trapSq = (maze) => {
-        let traps = [];
-        for (let i = 0; i < maze.length; i++) {
-          for (let j = 0; j < maze[i].length; j++) {
-            if (maze[i][j] === 'T') {
-              traps = maze[i][j];
-            }
-          }
-        }
-        return traps;
-      };
-
-      trapGen();
-      console.log(trapSq());
-
       labBackground(maze);
       mazeGen(x, y);
     };
