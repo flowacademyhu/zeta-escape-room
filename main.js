@@ -1,4 +1,5 @@
 let trapGen = require('./trap');
+let foodGen = require('./food');
 // let generate2d = require('./generate2d');
 // let twArray = require('./labirint');
 let move = require('./move');
@@ -19,6 +20,8 @@ const labBackground = (array) => {
         process.stdout.write('  ');
       } else if (array[i][j].value === 'x') {
         term.bgRed('  ');
+      } else if (array[i][j].value === 'F') {
+        term.bgBlue(' F');
       } else if (array[i][j].value === 'H') {
         term.bgBlack(' H');
       } else if (array[i][j].value === 'T') {
@@ -54,6 +57,7 @@ let life = { life: 10 };
 let torchLife = { life: 3 };
 hintGen();
 trapGen(array);
+foodGen(array);
 torch.torchGen(array, 3);
 labBackground(array);
 let a;
