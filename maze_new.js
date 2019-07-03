@@ -3,7 +3,9 @@ var term = require('terminal-kit').terminal;
 const labBackground = (array) => {
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array[i].length; j++) {
-      if (array[i][j].value === '1') {
+      if (i !== 0 && j !== 0 && i !== array.length - 1 && j !== array.length - 1 && array[i][j].visibility === false) {
+        term.bgBlack('  ');
+      } else if (array[i][j].value === '1') {
         term.bgWhite('  ');
       } else if (array[i][j].value === '0') {
         process.stdout.write('  ');
@@ -150,10 +152,10 @@ const mazeGen = (x, y) => {
         }
         break;
     }
-      labBackground(maze);
-      mazeGen(x, y);
-    };
-  }
 
-  mazeGen(1, 1);
+    mazeGen(x, y);
+  }
 };
+
+mazeGen(1, 1);
+labBackground(maze);
