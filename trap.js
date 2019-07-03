@@ -1,14 +1,15 @@
-const trapGen = (array) => {
+const trapGen = (maze) => {
   let n = 0;
+  let traps = [];
   while (n < 3) {
-    let a = Math.floor(Math.random() * array.length);
-    let b = Math.floor(Math.random() * array.length);
-    if (Number(array[a][b].value) === 0) {
-      array[a][b].value = 'T';
+    let a = Math.floor(Math.random() * maze.length - 1) + 1;
+    let b = Math.floor(Math.random() * maze[a].length - 1) + 1;
+    if (maze[a][b].value === '0') {
+      maze[a][b].value = 'T';
+      traps[n] = [a, b];
       n++;
     }
   }
 };
 
 module.exports = trapGen;
-
