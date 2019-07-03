@@ -1,4 +1,11 @@
 
+const generate2D = (n, m) => {
+  let arr = new Array(n);
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = new Array(m);
+  }
+  return arr;
+};
 const twArray = (arr) => {
   for (let i = 0; i < arr.length; i++) {
     for (let j = 0; j < arr[i].length; j++) {
@@ -9,6 +16,7 @@ const twArray = (arr) => {
       arr[27][j] = 1;
     }
   }
+  /* arr[1][2] = 1;
   arr[1][3] = 1;
   arr[1][4] = 1;
   arr[1][5] = 1;
@@ -34,8 +42,8 @@ const twArray = (arr) => {
   arr[1][25] = 1;
   arr[1][26] = 1;
   arr[1][27] = 1;
-
-  arr[2][3] = 1;
+*/
+  /* arr[2][3] = 1;
   arr[2][4] = 1;
   arr[2][5] = 1;
   arr[2][6] = 1;
@@ -58,9 +66,9 @@ const twArray = (arr) => {
   arr[2][23] = 1;
   arr[2][24] = 1;
   arr[2][25] = 1;
-  arr[2][26] = 1;
-  arr[2][27] = 1;
-
+  arr[2][26] = 0;
+  arr[2][27] = 0;
+*/
   arr[3][3] = 1;
   arr[3][4] = 1;
   arr[3][5] = 1;
@@ -431,5 +439,6 @@ const twArray = (arr) => {
 
   return arr;
 };
-
+let arr = generate2D(28, 28);
+console.log(twArray(arr));
 module.exports = twArray;

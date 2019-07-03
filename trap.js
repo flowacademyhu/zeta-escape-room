@@ -11,3 +11,4 @@ const trapGen = (array) => {
 };
 
 module.exports = trapGen;
+

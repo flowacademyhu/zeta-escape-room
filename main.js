@@ -1,11 +1,12 @@
-let generate2d = require('./generate2d');
-let twArray = require('./labirint');
+// let generate2d = require('./generate2d');
+// let twArray = require('./labirint');
 let move = require('./move');
-let validate = require('./validate');
+// let validate = require('./validate');
 var term = require('terminal-kit').terminal;
 let readline = require('readline-sync');
 let generateLabirynth = require('./labgen');
-
+let torch = require('./torch');
+let vision = require('./vision');
 let array = generateLabirynth();
 
 const labBackground = (array) => {
@@ -16,9 +17,13 @@ const labBackground = (array) => {
       } else if (array[i][j].visibility === false) {
         process.stdout.write('  ');
       } else if (array[i][j].value === 'x') {
-        term.bgCyan('  ');
+        term.bgRed('  ');
       } else if (array[i][j].value === 'H') {
-        process.stdout.write(' H');
+        term.bgBlack(' H');
+      } else if (array[i][j].value === 'TO') {
+        term.bgYellow('TO');
+      } else if (Number(array[i][j].value) === 0 && array[i][j].visibility === true) {
+        term.bgBlack('  ');
       }
     }
     console.log();
@@ -33,7 +38,7 @@ const hintGen = () => {
     let rng2 = Math.floor(Math.random() * 27 + 1);
     for (let i = 0; i < array.length; i++) {
       for (let j = 0; j < array[i].length; j++) {
-        if (rng1 === i && rng2 === j && array[i][j].visibility === false && Number(array[i][j].value !== 1)) {
+        if (rng1 === i && rng2 === j && array[i][j].visibility === false && Number(array[i][j].value) !== 1) {
           array[i][j] = { value: 'H', visibility: true, discovered: false, decription: 'Here is the hint.' };
           count++;
         }
@@ -42,8 +47,20 @@ const hintGen = () => {
   }
   return array;
 };
-console.clear();
+let torchLife = { life: 3 };
 hintGen();
+torch.torchGen(array, 3);
 labBackground(array);
-
-// validate();
+let a = readline.keyIn();
+let where = [1, 1];
+move(array, where, a);
+while (true) {
+  vision.vision(array, where, torchLife);
+  console.log(torchLife);
+  labBackground(array);
+  a = readline.keyIn();
+  where = move(array, where, a);
+  if (a === 'q') {
+    process.exit();
+  }
+}
