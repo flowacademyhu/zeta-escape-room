@@ -25,7 +25,6 @@ const torchUse = (array, where, range) => {
   let txm = x + range;
   let tymin;
   let tymax;
-
   for (let i = tx; i <= x; i++) {
     tx = x - range + c;
     tymin = y - c;
@@ -48,6 +47,7 @@ const torchUse = (array, where, range) => {
     }
     d++;
   }
+  return true;
 };
 
 const torchUpTime = (array, where) => {

@@ -6,6 +6,7 @@ var term = require('terminal-kit').terminal;
 let readline = require('readline-sync');
 let generateLabirynth = require('./labgen');
 let torch = require('./torch');
+let vision = require('./vision');
 let array = generateLabirynth();
 
 const labBackground = (array) => {
@@ -46,7 +47,7 @@ const hintGen = () => {
   }
   return array;
 };
-
+let torchLife = { life: 3 };
 hintGen();
 torch.torchGen(array, 3);
 labBackground(array);
@@ -54,7 +55,8 @@ let a = readline.keyIn();
 let where = [1, 1];
 move(array, where, a);
 while (true) {
-  torch.torchUse(array, where, 3);
+  vision.vision(array, where, torchLife);
+  console.log(torchLife);
   labBackground(array);
   a = readline.keyIn();
   where = move(array, where, a);
