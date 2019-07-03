@@ -1,3 +1,4 @@
+let trapGen = require('./trap');
 // let generate2d = require('./generate2d');
 // let twArray = require('./labirint');
 let move = require('./move');
@@ -20,6 +21,8 @@ const labBackground = (array) => {
         term.bgRed('  ');
       } else if (array[i][j].value === 'H') {
         term.bgBlack(' H');
+      } else if (array[i][j].value === 'T') {
+        term.bgGreen(' T');
       } else if (array[i][j].value === 'TO') {
         term.bgYellow('TO');
       } else if (Number(array[i][j].value) === 0 && array[i][j].visibility === true) {
@@ -47,18 +50,20 @@ const hintGen = () => {
   }
   return array;
 };
+let life = { life: 10 };
 let torchLife = { life: 3 };
 hintGen();
+trapGen(array);
 torch.torchGen(array, 3);
 labBackground(array);
-let a = readline.keyIn();
+let a;
 let where = [1, 1];
-move(array, where, a);
+
 while (true) {
   vision.vision(array, where, torchLife);
-  labBackground(array);
+   labBackground(array);
   a = readline.keyIn();
-  where = move(array, where, a);
+  move(array, where, a, life);
   if (a === 'q') {
     process.exit();
   }
