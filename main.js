@@ -61,8 +61,7 @@ let where = [1, 1];
 
 while (true) {
   vision.vision(array, where, torchLife);
-  console.log(life);
-  labBackground(array);
+   labBackground(array);
   a = readline.keyIn();
   move(array, where, a, life);
   if (a === 'q') {

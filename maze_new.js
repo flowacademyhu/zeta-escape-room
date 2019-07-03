@@ -35,7 +35,7 @@ const fill2d = (array) => {
     for (let j = 0; j < array[i].length; j++) {
       array[i][j] = { value: '1', visibility: false, visited: true };
       if (i % 2 !== 0 && j % 2 !== 0) {
-        array[i][j] = { value: '0', visibility: false, visited: false };
+        array[i][j] = { value: '0', visibility: false, visited: false, protected: false };
       }
     }
   }
@@ -127,25 +127,25 @@ const mazeGen = (x, y) => {
     switch (r) {
       case 1: // le
         if (maze[x + 2][y].visited === false) {
-          maze[x + 1][y] = { value: '0', visibility: false, visited: true };
+          maze[x + 1][y] = { value: '0', visibility: false, visited: true, protected: false };
           x = x + 2;
         }
         break;
       case 2: // jobbra
         if (maze[x][y + 2].visited === false) {
-          maze[x][y + 1] = { value: '0', visibility: false, visited: true };
+          maze[x][y + 1] = { value: '0', visibility: false, visited: true, protected: false };
           y = y + 2;
         }
         break;
       case 3: // balra
         if (maze[x][y - 2].visited === false) {
-          maze[x][y - 1] = { value: '0', visibility: false, visited: true };
+          maze[x][y - 1] = { value: '0', visibility: false, visited: true, protected: false };
           y = y - 2;
         }
         break;
       case 4: // fel
         if (maze[x - 2][y].visited === false) {
-          maze[x - 1][y] = { value: '0', visibility: false, visited: true };
+          maze[x - 1][y] = { value: '0', visibility: false, visited: true, protected: false };
           x = x - 2;
         }
         break;

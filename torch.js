@@ -50,14 +50,7 @@ const torchUse = (array, where, range) => {
   return true;
 };
 
-const torchUpTime = (array, where) => {
-  let x = Number(where[0]);
-  let y = Number(where[1]);
-  let torchLifeTime = 5;
-};
-
 module.exports = {
   torchGen: torchGen,
-  torchUse: torchUse,
-  torchUpTime: torchUpTime
+  torchUse: torchUse
 };
