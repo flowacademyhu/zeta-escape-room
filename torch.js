@@ -25,31 +25,29 @@ const torchUse = (array, where, range) => {
   let txm = x + range;
   let tymin;
   let tymax;
-  if (array[x][y].used === true) {
-    for (let i = tx; i <= x; i++) {
-      tx = x - range + c;
-      tymin = y - c;
-      tymax = y + c;
-      for (let ty = tymin; ty <= tymax; ty++) {
-        if (tx < array.length && tx > 1 && ty > 1 && ty < array.length) {
-          array[tx][ty].visibility = true;
-        }
+
+  for (let i = tx; i <= x; i++) {
+    tx = x - range + c;
+    tymin = y - c;
+    tymax = y + c;
+    for (let ty = tymin; ty <= tymax; ty++) {
+      if (tx < array.length && tx > 0 && ty > 0 && ty < array.length) {
+        array[tx][ty].visibility = true;
       }
-      c++;
     }
-    for (let i = txm; i >= x; i--) {
-      txm = x + range - d;
-      tymin = y - d;
-      tymax = y + d;
-      for (let ty = tymin; ty <= tymax; ty++) {
-        if (txm < array.length && txm > 1 && ty > 1 && ty < array.length) {
-          array[txm][ty].visibility = true;
-        }
-      }
-      d++;
-    }
+    c++;
   }
-  return true;
+  for (let i = txm; i >= x; i--) {
+    txm = x + range - d;
+    tymin = y - d;
+    tymax = y + d;
+    for (let ty = tymin; ty <= tymax; ty++) {
+      if (txm < array.length && txm > 0 && ty > 0 && ty < array.length) {
+        array[txm][ty].visibility = true;
+      }
+    }
+    d++;
+  }
 };
 
 const torchUpTime = (array, where) => {
