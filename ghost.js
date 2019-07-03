@@ -86,6 +86,7 @@ const ghostNeighbor = (maze, x, y) => {
 };
 
 let atemp = 0;
+let vtemp = '0';
 const ghostRandom = (maze, x, y) => {
   let ma = ghostNeighbor(maze, x, y);
   let r = 0;
@@ -121,26 +122,30 @@ const ghostRandom = (maze, x, y) => {
   }
   if (a === 1) { // fel
     if (x > 1 && Number(maze[x - 1][y].value) !== 1) {
-      maze[x][y].value = '0';
+      maze[x][y].value = vtemp;
       x = x - 1;
+      vtemp = maze[x][y].value;
       maze[x][y].value = 'g';
     }
   } else if (a === 2) { // le
     if (x < maze.length - 1 && Number(maze[x + 1][y].value) !== 1) {
       maze[x][y].value = '0';
       x = x + 1;
+      vtemp = maze[x][y].value;
       maze[x][y].value = 'g';
     }
   } else if (a === 3) { // jobbra
     if (y < maze[x].length - 1 && Number(maze[x][y + 1].value) !== 1) {
       maze[x][y].value = '0';
       y = y + 1;
+      vtemp = maze[x][y].value;
       maze[x][y].value = 'g';
     }
   } else if (a === 4) { // balra
     if (y > 1 && Number(maze[x][y - 1].value) !== 1) {
       maze[x][y].value = '0';
       y = y - 1;
+      vtemp = maze[x][y].value;
       maze[x][y].value = 'g';
     }
   }
