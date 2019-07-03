@@ -10,6 +10,7 @@ let generateLabirynth = require('./labgen');
 let torch = require('./torch');
 let vision = require('./vision');
 let array = generateLabirynth();
+let hint = require('./hint');
 
 const labBackground = (array) => {
   for (let i = 0; i < array.length; i++) {
@@ -36,26 +37,11 @@ const labBackground = (array) => {
   }
   return array;
 };
-
-const hintGen = () => {
-  let count = 0;
-  while (count < 7) {
-    let rng1 = Math.floor(Math.random() * 27 + 1);
-    let rng2 = Math.floor(Math.random() * 27 + 1);
-    for (let i = 0; i < array.length; i++) {
-      for (let j = 0; j < array[i].length; j++) {
-        if (rng1 === i && rng2 === j && array[i][j].visibility === false && Number(array[i][j].value) !== 1) {
-          array[i][j] = { value: 'H', visibility: true, discovered: false, decription: 'Here is the hint.' };
-          count++;
-        }
-      }
-    }
-  }
-  return array;
-};
+let password = { value: 'password' };
 let life = { life: 10 };
 let torchLife = { life: 3 };
-hintGen();
+let foundHints = [];
+hint.hintGen(array);
 trapGen(array);
 foodGen(array);
 torch.torchGen(array, 3);
@@ -68,7 +54,12 @@ while (true) {
   labBackground(array);
   a = readline.keyIn();
   move(array, where, a, life);
+  foundHints = hint.hintStash(array, where, password, foundHints);
+  console.log(foundHints);
   if (a === 'q') {
     process.exit();
+  }
+  if (a === 'h') {
+    hint.hintBoard(foundHints);
   }
 }
