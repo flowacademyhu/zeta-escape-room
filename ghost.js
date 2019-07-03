@@ -71,15 +71,15 @@ const ghostNeighbor = (maze, x, y) => {
     ma[i] = 1;
     i++;
   }
-  if (Number(maze[x + 1][y]) !== 1) {
+  if (Number(maze[x + 1][y].value) !== 1) {
     ma[i] = 2;
     i++;
   }
-  if (Number(maze[x][y + 1]) !== 1) {
+  if (Number(maze[x][y + 1].value) !== 1) {
     ma[i] = 3;
     i++;
   }
-  if (Number(maze[x][y - 1]) !== 1) {
+  if (Number(maze[x][y - 1].value) !== 1) {
     ma[i] = 4;
   }
   return ma;
@@ -88,28 +88,34 @@ const ghostNeighbor = (maze, x, y) => {
 let atemp = 0;
 const ghostRandom = (maze, x, y) => {
   let ma = ghostNeighbor(maze, x, y);
-  let r = Math.floor(Math.random() * ma.length);
-  let a = ma[r];
-  if (ma.length !== 1) {
-    if (atemp === 1 && a === 2) {
+  let r = 0;
+  let a = Math.floor(Math.random() * ma.length);
+  if (ma.length === 1) {
+    a = ma[0];
+  } else {
+    if (atemp === 1) {
       let d = ma.indexOf(2);
       ma.splice(d, 1);
-      let r = Math.floor(Math.random() * ma.length);
+      console.log(ma);
+      r = Math.floor(Math.random() * ma.length);
       a = ma[r];
-    } else if (atemp === 2 && a === 1) {
+    } else if (atemp === 2) {
       let d = ma.indexOf(1);
       ma.splice(d, 1);
-      let r = Math.floor(Math.random() * ma.length);
+      console.log(ma);
+      r = Math.floor(Math.random() * ma.length);
       a = ma[r];
-    } else if (atemp === 3 && a === 4) {
+    } else if (atemp === 3) {
       let d = ma.indexOf(4);
       ma.splice(d, 1);
-      let r = Math.floor(Math.random() * ma.length);
+      console.log(ma);
+      r = Math.floor(Math.random() * ma.length);
       a = ma[r];
-    } else if (atemp === 4 && a === 3) {
+    } else if (atemp === 4) {
       let d = ma.indexOf(3);
       ma.splice(d, 1);
-      let r = Math.floor(Math.random() * ma.length);
+      console.log(ma);
+      r = Math.floor(Math.random() * ma.length);
       a = ma[r];
     }
   }
