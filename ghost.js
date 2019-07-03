@@ -64,9 +64,23 @@ const ghostSee = (maze, x, y) => {
   seeRight(maze, x, y);
 };
 
-const ghostRandom = (maze, x, y) => {
-  let a = Math.floor(Math.random() * 4) + 1;
+let ma = [];
+const ghostNeighbor = (maze, x, y) => {
+  if (Number(maze[x - 1][y].value) !== 1) {
+    ma.push(1);
+  } else if (Number(maze[x + 1][y]) !== 1) {
+    ma.push(2);
+  } else if (Number(maze[x][y + 1]) !== 1) {
+    ma.push(3);
+  } else if (Number(maze[x][y - 1]) !== 1) {
+    ma.push(4);
+  }
+};
 
+let atemp = 0;
+const ghostRandom = (maze, x, y, ma) => {
+  let r = Math.floor(Math.random() * ma.length);
+  let a = ma[r];
   if (a === 1) { // fel
     if (x > 1 && Number(maze[x - 1][y].value) !== 1) {
       maze[x][y].value = '0';
@@ -92,6 +106,7 @@ const ghostRandom = (maze, x, y) => {
       maze[x][y].value = 'g';
     }
   }
+  atemp = a;
   return [x, y];
 };
 
