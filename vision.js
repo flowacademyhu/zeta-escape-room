@@ -33,7 +33,7 @@ const vision = (array, where, torchLife) => {
       array[where[0]][where[1]].torch = false;
     }
   } else {
-    torchLife = 3;
+    torchLife.life = 3;
     visionDefault(array, where);
   }
 };
