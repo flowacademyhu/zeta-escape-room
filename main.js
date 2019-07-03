@@ -50,20 +50,21 @@ const hintGen = () => {
   }
   return array;
 };
+let life = { life: 10 };
 let torchLife = { life: 3 };
 hintGen();
 trapGen(array);
 torch.torchGen(array, 3);
 labBackground(array);
-let a = readline.keyIn();
+let a;
 let where = [1, 1];
-move(array, where, a);
+
 while (true) {
   vision.vision(array, where, torchLife);
-  console.log(torchLife);
+  console.log(life);
   labBackground(array);
   a = readline.keyIn();
-  where = move(array, where, a);
+  move(array, where, a, life);
   if (a === 'q') {
     process.exit();
   }

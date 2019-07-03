@@ -1,9 +1,13 @@
-const move = (arr, where, a) => {
+
+const move = (arr, where, a, life) => {
   let x = Number(where[0]);
   let y = Number(where[1]);
 
   if (a === 'w') { // fel
     if (x > 1 && Number(arr[x - 1][y].value) !== 1) {
+      if (arr[x - 1][y].value === 'T') {
+        life.life--;
+      }
       arr[x][y].value = '0';
       x = x - 1;
       arr[x][y].value = 'x';
@@ -17,6 +21,9 @@ const move = (arr, where, a) => {
     }
   } else if (a === 's') { // le
     if (x < arr.length - 1 && Number(arr[x + 1][y].value) !== 1) {
+      if (arr[x + 1][y].value === 'T') {
+        life.life--;
+      }
       arr[x][y].value = '0';
       x = x + 1;
       arr[x][y].value = 'x';
@@ -32,6 +39,9 @@ const move = (arr, where, a) => {
     if ((y === 26 && x === 3) || (y === 26 && x === 4)) {
       console.log('Invalid movement!'); // validate melletti mezők
     } else if (y < arr[x].length - 1 && Number(arr[x][y + 1].value) !== 1) {
+      if (arr[x][y + 1].value === 'T') {
+        life.life--;
+      }
       arr[x][y].value = '0';
       y = y + 1;
       arr[x][y].value = 'x';
@@ -45,6 +55,9 @@ const move = (arr, where, a) => {
     }
   } else if (a === 'a') { // balra
     if (y > 1 && Number(arr[x][y - 1].value) !== 1) {
+      if (arr[x][y - 1].value === 'T') {
+        life.life--;
+      }
       arr[x][y].value = '0';
       y = y - 1;
       arr[x][y].value = 'x';
@@ -61,7 +74,6 @@ const move = (arr, where, a) => {
 
   where[0] = x;
   where[1] = y;
-  return where;
 };
 
 module.exports = move;
