@@ -127,25 +127,25 @@ const mazeGen = (x, y) => {
     switch (r) {
       case 1: // le
         if (maze[x + 2][y].visited === false) {
-          maze[x + 1][y] = { value: '0', visibility: false, visited: true, protected: false };
+          maze[x + 1][y] = { value: '0', visibility: false, visited: true };
           x = x + 2;
         }
         break;
       case 2: // jobbra
         if (maze[x][y + 2].visited === false) {
-          maze[x][y + 1] = { value: '0', visibility: false, visited: true, protected: false };
+          maze[x][y + 1] = { value: '0', visibility: false, visited: true };
           y = y + 2;
         }
         break;
       case 3: // balra
         if (maze[x][y - 2].visited === false) {
-          maze[x][y - 1] = { value: '0', visibility: false, visited: true, protected: false };
+          maze[x][y - 1] = { value: '0', visibility: false, visited: true };
           y = y - 2;
         }
         break;
       case 4: // fel
         if (maze[x - 2][y].visited === false) {
-          maze[x - 1][y] = { value: '0', visibility: false, visited: true, protected: false };
+          maze[x - 1][y] = { value: '0', visibility: false, visited: true };
           x = x - 2;
         }
         break;
