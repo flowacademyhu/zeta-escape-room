@@ -1,12 +1,11 @@
-let generate2d = require('./generate2d');
-let twArray = require('./labirint');
+// let generate2d = require('./generate2d');
+// let twArray = require('./labirint');
 let move = require('./move');
-let validate = require('./validate');
+// let validate = require('./validate');
 var term = require('terminal-kit').terminal;
 let readline = require('readline-sync');
 let generateLabirynth = require('./labgen');
-let torchGen = require('./torch');
-let torchUse = require('./torch-use');
+let torch = require('./torch');
 let array = generateLabirynth();
 
 const labBackground = (array) => {
@@ -48,22 +47,18 @@ const hintGen = () => {
   return array;
 };
 
-console.clear();
 hintGen();
-torchGen(array);
+torch.torchGen(array, 3);
 labBackground(array);
 let a = readline.keyIn();
 let where = [1, 1];
 move(array, where, a);
-
 while (true) {
+  torch.torchUse(array, where, 3);
   labBackground(array);
   a = readline.keyIn();
   where = move(array, where, a);
-  // torchUse(array, where);
   if (a === 'q') {
     process.exit();
   }
-  // if (a === 'v' && where[2][27] ===)
 }
-// validate();
