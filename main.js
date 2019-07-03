@@ -56,7 +56,6 @@ let where = [1, 1];
 move(array, where, a);
 while (true) {
   vision.vision(array, where, torchLife);
-  console.log(torchLife);
   labBackground(array);
   a = readline.keyIn();
   where = move(array, where, a);
