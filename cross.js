@@ -9,11 +9,13 @@ const createCross = (maze) => {
   }
 };
 
-const useCross = (maze) => {
+const useCross = (maze, where) => {
+  let x = where[0];
+  let y = where[1];
   if (maze[x][y].value === 'CR') {
     for (let i = 0; i < maze.length; i++) {
       for (let j = 0; j < maze[i].length; j++) {
-        if (maze[i][j].value !== '1') {
+        if (maze[i][j].value === 'x') {
           maze[i][j].protected = true;
         }
       }

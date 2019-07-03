@@ -11,6 +11,9 @@ const move = (arr, where, a, life) => {
       if (arr[x - 1][y].value === 'F') {
         life.life++;
       }
+      if (arr[x - 1][y].value === 'CR') {
+        
+      }
       arr[x][y].value = '0';
       x = x - 1;
       arr[x][y].value = 'x';
