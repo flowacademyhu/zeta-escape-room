@@ -64,23 +64,55 @@ const ghostSee = (maze, x, y) => {
   seeRight(maze, x, y);
 };
 
-let ma = [];
 const ghostNeighbor = (maze, x, y) => {
+  let ma = [];
+  let i = 0;
   if (Number(maze[x - 1][y].value) !== 1) {
-    ma.push(1);
-  } else if (Number(maze[x + 1][y]) !== 1) {
-    ma.push(2);
-  } else if (Number(maze[x][y + 1]) !== 1) {
-    ma.push(3);
-  } else if (Number(maze[x][y - 1]) !== 1) {
-    ma.push(4);
+    ma[i] = 1;
+    i++;
   }
+  if (Number(maze[x + 1][y]) !== 1) {
+    ma[i] = 2;
+    i++;
+  }
+  if (Number(maze[x][y + 1]) !== 1) {
+    ma[i] = 3;
+    i++;
+  }
+  if (Number(maze[x][y - 1]) !== 1) {
+    ma[i] = 4;
+  }
+  return ma;
 };
 
 let atemp = 0;
-const ghostRandom = (maze, x, y, ma) => {
+const ghostRandom = (maze, x, y) => {
+  let ma = ghostNeighbor(maze, x, y);
   let r = Math.floor(Math.random() * ma.length);
   let a = ma[r];
+  if (ma.length !== 1) {
+    if (atemp === 1 && a === 2) {
+      let d = ma.indexOf(2);
+      ma.splice(d, 1);
+      let r = Math.floor(Math.random() * ma.length);
+      a = ma[r];
+    } else if (atemp === 2 && a === 1) {
+      let d = ma.indexOf(1);
+      ma.splice(d, 1);
+      let r = Math.floor(Math.random() * ma.length);
+      a = ma[r];
+    } else if (atemp === 3 && a === 4) {
+      let d = ma.indexOf(4);
+      ma.splice(d, 1);
+      let r = Math.floor(Math.random() * ma.length);
+      a = ma[r];
+    } else if (atemp === 4 && a === 3) {
+      let d = ma.indexOf(3);
+      ma.splice(d, 1);
+      let r = Math.floor(Math.random() * ma.length);
+      a = ma[r];
+    }
+  }
   if (a === 1) { // fel
     if (x > 1 && Number(maze[x - 1][y].value) !== 1) {
       maze[x][y].value = '0';
