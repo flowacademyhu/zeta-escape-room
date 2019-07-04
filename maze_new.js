@@ -11,6 +11,8 @@ const labBackground = (array) => {
         process.stdout.write('  ');
       } else if (array[i][j].value === 'x') {
         term.bgRed('  ');
+      } else if (array[i][j].value === 'G') {
+        term.bgGreen(' G');
       } else if (array[i][j].value === 'T') {
         term.bgGreen(' T');
       } else if (array[i][j].value === 'TO') {
@@ -35,10 +37,10 @@ const generate2d = (n, m) => {
 const fill2d = (array) => {
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array[i].length; j++) {
-      array[i][j] = { value: '1', visibility: true, visited: true };
+      array[i][j] = { value: '1', visibility: false, visited: true };
 
       if (i % 2 !== 0 && j % 2 !== 0) {
-        array[i][j] = { value: '0', visibility: true, visited: false, protected: false };
+        array[i][j] = { value: '0', visibility: false, visited: false, protected: false };
       }
     }
   }

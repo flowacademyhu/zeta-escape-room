@@ -84,15 +84,13 @@ const ghostNeighbor = (maze, x, y) => {
   }
   return ma;
 };
-
+let n = 0;
 let atemp = 0;
-let vtemp;
-let vstemp;
+let vtemp = '0';
+let vstemp = false;
 const ghostRandom = (maze, x, y) => {
-  vtemp = maze[x][y].value;
-  vstemp = maze[x][y].visibility;
-  maze[x][y].value = 'g';
-  maze[x][y].visibility = true;
+  // maze[x][y].value = 'G';
+  // maze[x][y].visibility = true;
   let ma = ghostNeighbor(maze, x, y);
   let r = 0;
   let a = Math.floor(Math.random() * ma.length);
@@ -123,35 +121,79 @@ const ghostRandom = (maze, x, y) => {
   }
   if (a === 1) { // fel
     if (x > 1 && Number(maze[x - 1][y].value) !== 1) {
-      maze[x][y].value = vtemp;
-      maze[x][y].visibility = vstemp;
-      x = x - 1;
-      maze[x][y].value = 'g';
-      maze[x][y].visibility = true;
+      if (maze[x - 1][y].value !== 'x') {
+        maze[x][y].value = vtemp;
+        maze[x][y].visibility = vstemp;
+        x = x - 1;
+        vtemp = maze[x][y].value;
+        vstemp = maze[x][y].visibility;
+        maze[x][y].value = 'G';
+        maze[x][y].visibility = true;
+      } else {
+        maze[x][y] = { value: 'x' };
+        x = x - 1;
+        vtemp = maze[x][y].value;
+        vstemp = maze[x][y].visibility;
+        maze[x][y].value = 'G';
+        maze[x][y].visibility = true;
+      }
     }
   } else if (a === 2) { // le
     if (x < maze.length - 1 && Number(maze[x + 1][y].value) !== 1) {
-      maze[x][y].value = vtemp;
-      maze[x][y].visibility = vstemp;
-      x = x + 1;
-      maze[x][y].value = 'g';
-      maze[x][y].visibility = true;
+      if (maze[x + 1][y].value !== 'x') {
+        maze[x][y].value = vtemp;
+        maze[x][y].visibility = vstemp;
+        x = x + 1;
+        vtemp = maze[x][y].value;
+        vstemp = maze[x][y].visibility;
+        maze[x][y].value = 'G';
+        maze[x][y].visibility = true;
+      } else {
+        maze[x][y] = { value: 'x' };
+        x = x + 1;
+        vtemp = maze[x][y].value;
+        vstemp = maze[x][y].visibility;
+        maze[x][y].value = 'G';
+        maze[x][y].visibility = true;
+      }
     }
   } else if (a === 3) { // jobbra
     if (y < maze[x].length - 1 && Number(maze[x][y + 1].value) !== 1) {
-      maze[x][y].value = vtemp;
-      maze[x][y].visibility = vstemp;
-      y = y + 1;
-      maze[x][y].value = 'g';
-      maze[x][y].visibility = true;
+      if (maze[x][y + 1].value !== 'x') {
+        maze[x][y].value = vtemp;
+        maze[x][y].visibility = vstemp;
+        y = y + 1;
+        vtemp = maze[x][y].value;
+        vstemp = maze[x][y].visibility;
+        maze[x][y].value = 'G';
+        maze[x][y].visibility = true;
+      } else {
+        maze[x][y] = { value: 'x' };
+        y = y + 1;
+        vtemp = maze[x][y].value;
+        vstemp = maze[x][y].visibility;
+        maze[x][y].value = 'G';
+        maze[x][y].visibility = true;
+      }
     }
   } else if (a === 4) { // balra
     if (y > 1 && Number(maze[x][y - 1].value) !== 1) {
-      maze[x][y].value = vtemp;
-      maze[x][y].visibility = vstemp;
-      y = y - 1;
-      maze[x][y].value = 'g';
-      maze[x][y].visibility = true;
+      if (maze[x][y - 1].value !== 'x') {
+        maze[x][y].value = vtemp;
+        maze[x][y].visibility = vstemp;
+        y = y - 1;
+        vtemp = maze[x][y].value;
+        vstemp = maze[x][y].visibility;
+        maze[x][y].value = 'G';
+        maze[x][y].visibility = true;
+      } else {
+        maze[x][y] = { value: '0' };
+        y = y - 1;
+        vtemp = maze[x][y].value;
+        vstemp = maze[x][y].visibility;
+        maze[x][y].value = 'G';
+        maze[x][y].visibility = true;
+      }
     }
   }
   atemp = a;
@@ -164,12 +206,12 @@ const ghostTargeted = (maze, x, y) => {
       maze[x][y] = vtemp;
       x = x + 1;
       vtemp = maze[x][y].value;
-      maze[x][y] = 'g';
+      maze[x][y] = 'G';
     } else if (x > mx) {
       maze[x][y] = vtemp;
       x = x - 1;
       vtemp = maze[x][y].value;
-      maze[x][y] = 'g';
+      maze[x][y] = 'G';
     }
   }
   while (y !== my) {
@@ -177,12 +219,12 @@ const ghostTargeted = (maze, x, y) => {
       maze[x][y] = vtemp;
       y = y + 1;
       vtemp = maze[x][y].value;
-      maze[x][y] = 'g';
+      maze[x][y] = 'G';
     } else if (y > my) {
       maze[x][y] = vtemp;
       y = y - 1;
       vtemp = maze[x][y].value;
-      maze[x][y] = 'g';
+      maze[x][y] = 'G';
     }
   }
   return { x, y };
@@ -201,7 +243,7 @@ const hidegHost = (maze, x, y) => {
   }
   ghostMove(maze, x, y);
 }; */
-let gx = maze.length - 2;
+/* let gx = maze.length - 2;
 let gy = maze.length - 2;
 let prot = false;
 
@@ -221,3 +263,11 @@ setInterval((m) => {
     gy = arr[1];
   }
 }, 150, maze);
+*/
+module.exports = {
+  ghostSee,
+  ghostNeighbor,
+  ghostRandom,
+  ghostTargeted,
+  hidegHost
+};
