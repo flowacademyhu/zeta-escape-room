@@ -19,6 +19,8 @@ const labBackground = (array) => {
         term.bgYellow('TO');
       } else if (array[i][j].value === 'H') {
         term.bgBlue(' H');
+      } else if (array[i][j].value === 'E') {
+        term.bgGreen('EX');
       } else if (Number(array[i][j].value) === 0 && array[i][j].visibility === true) {
         term.bgBlack('  ');
       }
@@ -43,6 +45,9 @@ const fill2d = (array) => {
 
       if (i % 2 !== 0 && j % 2 !== 0) {
         array[i][j] = { value: '0', visibility: false, visited: false, protected: false };
+      }
+      if ((i === 4 || i === 5) && j === array.length - 1) {
+        array[i][j] = { value: 'E', visibility: true };
       }
     }
   }

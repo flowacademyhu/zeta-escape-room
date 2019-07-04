@@ -7,6 +7,7 @@ const main = () => {
   let ghost = require('./ghost');
   let torch = require('./torch');
   let vision = require('./vision');
+  let validate = require('./validate');
   let { hintGen, hintStash, hintBoard } = require('./hint');
   let maze = [];
   let foundHints = [];
@@ -28,6 +29,7 @@ const main = () => {
   torch.torchGen(maze, 3);
   trapGen(maze);
   hintGen(maze);
+  foodGen(maze);
   let life = { life: 10 };
   let torchLife = { life: 3 };
 
@@ -64,9 +66,13 @@ const main = () => {
       hintBoard(foundHints);
       console.log('\n\nPress any key to return into the maze. (Except "q".)');
       a = readline.keyIn();
+      console.clear();
     }
     if (a === 'q') {
       process.exit();
+    }
+    if (a === 'v' && (maze[3][maze.length].value === 'x' || maze[4][maze.length] === 'x')) {
+      validate(pw);
     }
   }
 };

@@ -5,7 +5,6 @@ const trapGen = (maze) => {
     let b = Math.floor(Math.random() * (maze[a].length - 1));
     if (maze[a][b].value === '0') {
       maze[a][b].value = 'T';
-      maze[a][b].visibility = true;
       n++;
     }
   }
