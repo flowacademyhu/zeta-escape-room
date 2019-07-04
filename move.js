@@ -10,6 +10,10 @@ const move = (arr, where, a, life) => {
       }
       if (arr[x - 1][y].value === 'F') {
         life.life++;
+      }/*
+      if (arr[x - 1][y].value === 'H') {
+        arr[x - 1][y].discovered = true;
+      } */
       }
       if (arr[x - 1][y].value === 'CR') {
 
@@ -32,7 +36,10 @@ const move = (arr, where, a, life) => {
       }
       if (arr[x + 1][y].value === 'F') {
         life.life++;
-      }
+      } /*
+      if (arr[x + 1][y].value === 'H') {
+        arr[x + 1][y].discovered = true;
+      } */
       arr[x][y].value = '0';
       x = x + 1;
       arr[x][y].value = 'x';
@@ -53,6 +60,9 @@ const move = (arr, where, a, life) => {
       if (arr[x][y + 1].value === 'F') {
         life.life++;
       }
+      /* if (arr[x][y + 1].value === 'H') {
+        arr[x][y + 1].discovered = true;
+      } */
       arr[x][y].value = '0';
       y = y + 1;
       arr[x][y].value = 'x';
@@ -71,7 +81,9 @@ const move = (arr, where, a, life) => {
       }
       if (arr[x][y - 1].value === 'F') {
         life.life++;
-      }
+      }/* if (arr[x][y - 1].value === 'H') {
+        arr[x][y - 1].discovered = true;
+      } */
       arr[x][y].value = '0';
       y = y - 1;
       arr[x][y].value = 'x';
