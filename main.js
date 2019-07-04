@@ -10,7 +10,16 @@ const main = () => {
   let { hintGen, hintStash, hintBoard } = require('./hint');
   let maze = [];
   let foundHints = [];
-  let password = { value: 'password' };
+  let pw = 'password';
+  let password = [
+    { letter: 'p', description: 'Letter is P', seen: false },
+    { letter: 'a', description: 'Letter is A', seen: false },
+    { letter: 's', description: 'Letters are 2S', seen: false },
+    { letter: 'w', description: 'Letter is W', seen: false },
+    { letter: 'o', description: 'Letter is O', seen: false },
+    { letter: 'r', description: 'Letter is R', seen: false },
+    { letter: 'd', description: 'Letter is D', seen: false }
+  ];
 
   maze = gen.generate2d(35, 35);
   maze = gen.fill2d(maze);
@@ -43,7 +52,7 @@ const main = () => {
       gx = arr[0];
       gy = arr[1];
     }
-    hintStash(maze, where, password, foundHints);
+    hintStash(maze, where, pw, foundHints, password);
     gen.labBackground(maze);
     a = readline.keyIn();
     console.clear();

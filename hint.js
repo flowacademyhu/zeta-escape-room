@@ -15,21 +15,11 @@ const hintGen = (array) => {
   return array;
 };
 
-const hintStash = (array, where, pw, foundHints) => {
+const hintStash = (array, where, pw, foundHints, password) => {
   let x = Number(where[0]);
   let y = Number(where[1]);
-  let password = [
-    { letter: 'p', description: 'Letter is P', seen: false },
-    { letter: 'a', description: 'Letter is A', seen: false },
-    { letter: 's', description: 'Letter is S', seen: false },
-    { letter: 's', description: 'Letter is S', seen: false },
-    { letter: 'w', description: 'Letter is W', seen: false },
-    { letter: 'o', description: 'Letter is O', seen: false },
-    { letter: 'r', description: 'Letter is R', seen: false },
-    { letter: 'd', description: 'Letter is D', seen: false }
-  ];
   let r = Math.floor(Math.random() * password.length);
-  if (array[x][y].discovered === false && password[r].seen === false && pw.value === 'password' && password.length !== 0) {
+  if (array[x][y].discovered === false && password[r].seen === false && pw === 'password' && password.length !== 0) {
     array[x][y].discovered = true;
     password[r].seen = true;
     foundHints.push(password[r]);
@@ -44,7 +34,7 @@ const hintStash = (array, where, pw, foundHints) => {
 
 const hintBoard = (foundHints) => {
   for (let i = 0; i < foundHints.length; i++) {
-    console.log(i + '. ' + foundHints[i].description);
+    console.log((i + 1) + '. ' + foundHints[i].description);
   }
 };
 
