@@ -1,6 +1,6 @@
-let main = require('./main');
-let manual = require('./manual');
 const menu = () => {
+  let main = require('./main');
+  let manual = require('./manual');
   var term = require('terminal-kit').terminal;
   var center = require('center-align');
 
@@ -30,6 +30,12 @@ const menu = () => {
   });
 };
 
-menu();
+const back2menu = () => {
+  menu();
+};
 
-module.exports = menu;
+menu();
+module.exports = {
+  back2menu,
+  menu
+};
