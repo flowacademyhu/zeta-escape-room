@@ -3,12 +3,12 @@ let readline = require('readline-sync');
 let trapGen = require('./trap');
 let foodGen = require('./food');
 let move = require('./move');
-let generateLabirynth = require('./labgen');
+let gen = require('./maze_new');
 let torch = require('./torch');
 let vision = require('./vision');
-let array = generateLabirynth();
+let maze = [];
 
-const labBackground = (array) => {
+/* const labBackground = (array) => {
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array[i].length; j++) {
       if (Number(array[i][j].value) === 1 && array[i][j].visibility === true) {
@@ -33,7 +33,11 @@ const labBackground = (array) => {
   }
   return array;
 };
-
+*/
+maze = gen.generate2d(27, 27);
+gen.fill2d(maze);
+gen.mazeGen(1, 1);
+gen.labBackground(maze);
 let life = { life: 10 };
 let torchLife = { life: 3 };
 
@@ -41,10 +45,10 @@ let a;
 let where = [1, 1];
 
 while (true) {
-  vision.vision(array, where, torchLife);
-  labBackground(array);
+  vision.vision(maze, where, torchLife);
+  gen.labBackground(maze);
   a = readline.keyIn();
-  move(array, where, a, life);
+  move(maze, where, a, life);
   if (a === 'q') {
     process.exit();
   }

@@ -35,9 +35,9 @@ const generate2d = (n, m) => {
 const fill2d = (array) => {
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array[i].length; j++) {
-      array[i][j] = { value: '1', visibility: false, visited: true };
+      array[i][j] = { value: '1', visibility: true, visited: true };
       if (i % 2 !== 0 && j % 2 !== 0) {
-        array[i][j] = { value: '0', visibility: false, visited: false, protected: false };
+        array[i][j] = { value: '0', visibility: true, visited: false, protected: false };
       }
     }
   }
@@ -89,12 +89,11 @@ let maze = [];
 maze = generate2d(29, 29);
 fill2d(maze);
 
-let r;
-let rng1 = [1, 2, 4];
-let rng2 = [1, 3, 4];
-let rng4 = [1, 3];
-
 const mazeGen = (x, y) => {
+  let r;
+  let rng1 = [1, 2, 4];
+  let rng2 = [1, 3, 4];
+  let rng4 = [1, 3];
   maze[x][y].visited = true;
   if (!neighbour(x, y)) {
     return;
@@ -157,5 +156,10 @@ const mazeGen = (x, y) => {
   }
 };
 
-mazeGen(1, 1);
-labBackground(maze);
+module.exports = {
+  generate2d: generate2d,
+  fill2d: fill2d,
+  neighbour: neighbour,
+  mazeGen: mazeGen,
+  labBackground: labBackground
+};

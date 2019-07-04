@@ -12,7 +12,7 @@ const move = (arr, where, a, life) => {
         life.life++;
       }
       if (arr[x - 1][y].value === 'CR') {
-        
+
       }
       arr[x][y].value = '0';
       x = x - 1;
@@ -45,7 +45,7 @@ const move = (arr, where, a, life) => {
       console.log('Invalid movement!');
     }
   } else if (a === 'd') { // jobbra
-    if ((y === 26 && x === 3) || (y === 26 && x === 4)) {
+    if ((y === arr.length - 2 && x === 3) || (y === arr.length - 2 && x === 4)) {
       console.log('Invalid movement!'); // validate melletti mezők
     } else if (y < arr[x].length - 1 && Number(arr[x][y + 1].value) !== 1) {
       if (arr[x][y + 1].value === 'T') {
