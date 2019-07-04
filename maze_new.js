@@ -11,8 +11,8 @@ const labBackground = (array) => {
         process.stdout.write('  ');
       } else if (array[i][j].value === 'x') {
         term.bgRed('  ');
-      } else if (array[i][j].value === 'H') {
-        term.bgBlack(' H');
+      } else if (array[i][j].value === 'T') {
+        term.bgGreen(' T');
       } else if (array[i][j].value === 'TO') {
         term.bgYellow('TO');
       } else if (Number(array[i][j].value) === 0 && array[i][j].visibility === true) {
@@ -36,6 +36,7 @@ const fill2d = (array) => {
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array[i].length; j++) {
       array[i][j] = { value: '1', visibility: true, visited: true };
+
       if (i % 2 !== 0 && j % 2 !== 0) {
         array[i][j] = { value: '0', visibility: true, visited: false, protected: false };
       }
@@ -44,7 +45,7 @@ const fill2d = (array) => {
   return array;
 };
 
-const neighbour = (x, y) => {
+const neighbour = (x, y, maze) => {
   // bal felső
   if (x === 1 && y === 1 && (maze[x + 2][y].visited === false || maze[x][y + 2].visited === false)) {
     return true;
@@ -89,16 +90,16 @@ let maze = [];
 maze = generate2d(29, 29);
 fill2d(maze);
 
-const mazeGen = (x, y) => {
+const mazeGen = (x, y, maze) => {
   let r;
   let rng1 = [1, 2, 4];
   let rng2 = [1, 3, 4];
   let rng4 = [1, 3];
   maze[x][y].visited = true;
-  if (!neighbour(x, y)) {
+  if (!neighbour(x, y, maze)) {
     return;
   }
-  while (neighbour(x, y)) {
+  while (neighbour(x, y, maze)) {
     if (x === 1) {
       if (y === 1) {
         r = Math.floor(Math.random() * 2) + 1;
@@ -152,7 +153,7 @@ const mazeGen = (x, y) => {
         break;
     }
 
-    mazeGen(x, y);
+    mazeGen(x, y, maze);
   }
 };
 

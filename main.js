@@ -4,6 +4,7 @@ let trapGen = require('./trap');
 let foodGen = require('./food');
 let move = require('./move');
 let gen = require('./maze_new');
+
 let torch = require('./torch');
 let vision = require('./vision');
 let maze = [];
@@ -36,19 +37,26 @@ let maze = [];
 */
 maze = gen.generate2d(27, 27);
 gen.fill2d(maze);
-gen.mazeGen(1, 1);
-gen.labBackground(maze);
+gen.mazeGen(1, 1, maze);
+maze[1][1] = { value: 'x', visibility: true };
+torch.torchGen(maze, 3);
+trapGen(maze);
+// gen.labBackground(maze);
 let life = { life: 10 };
 let torchLife = { life: 3 };
 
 let a;
 let where = [1, 1];
-
+console.clear();
 while (true) {
   vision.vision(maze, where, torchLife);
+
   gen.labBackground(maze);
+
   a = readline.keyIn();
+  console.clear();
   move(maze, where, a, life);
+
   if (a === 'q') {
     process.exit();
   }
