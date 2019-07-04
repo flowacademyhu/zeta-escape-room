@@ -130,7 +130,7 @@ const ghostRandom = (maze, x, y) => {
         maze[x][y].value = 'G';
         maze[x][y].visibility = true;
       } else {
-        maze[x][y] = { value: 'x' };
+        maze[x][y] = { value: 'x', visibility: true };
         x = x - 1;
         vtemp = maze[x][y].value;
         vstemp = maze[x][y].visibility;
@@ -149,7 +149,7 @@ const ghostRandom = (maze, x, y) => {
         maze[x][y].value = 'G';
         maze[x][y].visibility = true;
       } else {
-        maze[x][y] = { value: 'x' };
+        maze[x][y] = { value: 'x', visibility: true };
         x = x + 1;
         vtemp = maze[x][y].value;
         vstemp = maze[x][y].visibility;
@@ -168,7 +168,7 @@ const ghostRandom = (maze, x, y) => {
         maze[x][y].value = 'G';
         maze[x][y].visibility = true;
       } else {
-        maze[x][y] = { value: 'x' };
+        maze[x][y] = { value: 'x', visibility: true };
         y = y + 1;
         vtemp = maze[x][y].value;
         vstemp = maze[x][y].visibility;
@@ -187,7 +187,7 @@ const ghostRandom = (maze, x, y) => {
         maze[x][y].value = 'G';
         maze[x][y].visibility = true;
       } else {
-        maze[x][y] = { value: '0' };
+        maze[x][y] = { value: 'x', visibility: true };
         y = y - 1;
         vtemp = maze[x][y].value;
         vstemp = maze[x][y].visibility;

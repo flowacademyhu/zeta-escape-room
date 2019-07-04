@@ -12,7 +12,7 @@ const labBackground = (array) => {
       } else if (array[i][j].value === 'x') {
         term.bgRed('  ');
       } else if (array[i][j].value === 'G') {
-        term.bgGreen(' G');
+        term.bgMagenta(' G');
       } else if (array[i][j].value === 'T') {
         term.bgGreen(' T');
       } else if (array[i][j].value === 'TO') {

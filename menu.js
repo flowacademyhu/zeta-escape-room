@@ -1,10 +1,12 @@
 let main = require('./main');
+let manual = require('./manual');
 const menu = () => {
   var term = require('terminal-kit').terminal;
   var center = require('center-align');
 
   let menusor = [
     'New Game',
+    'Manual',
     'Credits',
     'Exit'
 
@@ -17,6 +19,8 @@ const menu = () => {
     );
     if (response.selectedIndex === 0) {
       main();
+    } else if (response.selectedIndex === 1) {
+      manual();
     } else if (response.selectedIndex === 1) {
       console.log('credits');
     } else if (response.selectedIndex === 2) {

@@ -54,13 +54,15 @@ const main = () => {
     }
     hintStash(maze, where, pw, foundHints, password);
     gen.labBackground(maze);
+    console.log('\n Life:' + life.life);
     a = readline.keyIn();
     console.clear();
     move(maze, where, a, life);
     if (a === 'h') {
       console.log('Found Hints:');
-      console.log('(The hints below are not in the right sequence.)');
+      console.log('\n(The hints below are not in the right sequence.)');
       hintBoard(foundHints);
+      console.log('\n\nPress any key to return into the maze. (Except "q".)');
       a = readline.keyIn();
     }
     if (a === 'q') {
