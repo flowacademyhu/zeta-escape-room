@@ -6,7 +6,7 @@ const torchGen = (array, n) => {
     let rng2 = Math.floor(Math.random() * 27 + 1);
     for (let i = 1; i < array.length - 1; i++) {
       for (let j = 1; j < array[i].length - 1; j++) {
-        if (rng1 === i && rng2 === j && array[i][j].visibility === false && Number(array[i][j].value) !== 1) {
+        if (rng1 === i && rng2 === j && array[i][j].visibility === false && Number(array[i][j].value) === 0) {
           array[i][j] = { value: 'TO', visibility: true, used: false };
           count++;
         }

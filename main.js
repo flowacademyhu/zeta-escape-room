@@ -26,6 +26,8 @@ const main = () => {
   maze = gen.fill2d(maze);
   gen.mazeGen(1, 1, maze);
   maze[1][1] = { value: 'x', visibility: true };
+  maze[3][maze.length - 1] = { value: 'E', visibility: true, visited: true };
+  maze[4][maze.length - 1] = { value: 'E', visibility: true, visited: true };
   torch.torchGen(maze, 3);
   trapGen(maze);
   hintGen(maze);
@@ -59,6 +61,7 @@ const main = () => {
     console.log('\n Life:' + life.life);
     a = readline.keyIn();
     console.clear();
+    console.log(where);
     move(maze, where, a, life);
     if (a === 'h') {
       console.log('Found Hints:');
@@ -71,7 +74,8 @@ const main = () => {
     if (a === 'q') {
       process.exit();
     }
-    if (a === 'v' && (maze[3][maze.length].value === 'x' || maze[4][maze.length] === 'x')) {
+    if (a === 'v' && (maze[3][maze.length - 2].value === 'x' || maze[4][maze.length - 2] === 'x')) {
+      console.clear();
       validate(pw);
     }
   }

@@ -13,7 +13,10 @@ const validate = (pw) => {
       return !boolean;
     } else {
       if (life === 1) {
-        return boolean;
+        console.clear();
+        console.log('Press a key to exit.');
+        str = readline.keyIn();
+        process.exit();
       }
       life--;
       console.log('Invalid password. You have ' + life + ' more try.');

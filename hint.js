@@ -5,7 +5,7 @@ const hintGen = (array) => {
     let rng2 = Math.floor(Math.random() * 35 + 1);
     for (let i = 0; i < array.length; i++) {
       for (let j = 0; j < array[i].length; j++) {
-        if (rng1 === i && rng2 === j && array[i][j].visibility === false && Number(array[i][j].value) !== 1) {
+        if (rng1 === i && rng2 === j && array[i][j].visibility === false && Number(array[i][j].value) === 0) {
           array[i][j] = { value: 'H', visibility: true, discovered: false };
           count++;
         }
