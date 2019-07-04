@@ -7,7 +7,10 @@ const main = () => {
   let ghost = require('./ghost');
   let torch = require('./torch');
   let vision = require('./vision');
+  let { hintGen, hintStash, hintBoard } = require('./hint');
   let maze = [];
+  let foundHints = [];
+  let password = { value: 'password' };
 
   maze = gen.generate2d(35, 35);
   maze = gen.fill2d(maze);
@@ -15,6 +18,7 @@ const main = () => {
   maze[1][1] = { value: 'x', visibility: true };
   torch.torchGen(maze, 3);
   trapGen(maze);
+  hintGen(maze);
   let life = { life: 10 };
   let torchLife = { life: 3 };
 
@@ -39,17 +43,21 @@ const main = () => {
       gx = arr[0];
       gy = arr[1];
     }
-
+    hintStash(maze, where, password, foundHints);
     gen.labBackground(maze);
-
     a = readline.keyIn();
     console.clear();
     move(maze, where, a, life);
-
+    if (a === 'h') {
+      console.log('Found Hints:');
+      console.log('(The hints below are not in the right sequence.)');
+      hintBoard(foundHints);
+      a = readline.keyIn();
+    }
     if (a === 'q') {
       process.exit();
     }
   }
 };
 
-module.exports = main;  
+module.exports = main;
