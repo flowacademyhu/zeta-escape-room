@@ -13,7 +13,7 @@ const menu = () => {
   menusor = center(menusor);
 
   term.singleColumnMenu(menusor, function (error, response) {
-    term('\n').eraseLineAfter.green(
+    term('\n')(
     );
     if (response.selectedIndex === 0) {
       main();

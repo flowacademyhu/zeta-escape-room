@@ -56,8 +56,6 @@ const main = () => {
   let prot = false;
   while (true) {
     vision.vision(maze, where, torchLife);
-
-    console.log('a');
     if (prot) {
       setTimeout(ghost.hidegHost, 30 * 1000);
       gx = maze.length - 2;
@@ -66,7 +64,6 @@ const main = () => {
     if (ghost.ghostSee(maze, gx, gy)) {
       ghost.ghostTargeted(maze, gx, gy);
     } else {
-      console.log('b');
       let arr = ghost.ghostRandom(maze, gx, gy);
       gx = arr[0];
       gy = arr[1];

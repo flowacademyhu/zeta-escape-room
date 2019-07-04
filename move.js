@@ -23,7 +23,7 @@ const move = (arr, where, a, life) => {
         arr[x][y].torch = true;
       }
     } else {
-      console.log('Invalid movement!\n');
+
     }
   } else if (a === 's') { // le
     if (x < arr.length - 1 && Number(arr[x + 1][y].value) !== 1) {
@@ -42,11 +42,10 @@ const move = (arr, where, a, life) => {
         arr[x][y].torch = true;
       }
     } else {
-      console.log('Invalid movement!\n');
+
     }
   } else if (a === 'd') { // jobbra
     if ((y === arr.length - 2 && x === 3) || (y === arr.length - 2 && x === 4)) {
-      console.log('Invalid movement!'); // validate melletti mezők
     } else if (y < arr[x].length - 1 && Number(arr[x][y + 1].value) !== 1) {
       if (arr[x][y + 1].value === 'T') {
         life.life--;
@@ -63,7 +62,7 @@ const move = (arr, where, a, life) => {
         arr[x][y].torch = true;
       }
     } else {
-      console.log('Invalid movement!\n');
+
     }
   } else if (a === 'a') { // balra
     if (y > 1 && Number(arr[x][y - 1].value) !== 1) {
@@ -83,7 +82,7 @@ const move = (arr, where, a, life) => {
         console.log(arr[x][y].torch);
       }
     } else {
-      console.log('Invalid movement!\n');
+
     }
   }
 
