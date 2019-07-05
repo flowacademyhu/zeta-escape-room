@@ -47,6 +47,8 @@ const main = () => {
     gen.labBackground(maze);
     // gen.rawDraw(maze);
     console.log('\n Life:' + life.life);
+    console.log('\n Press "m" button to open the manual.');
+    console.log(' If you would like to exit (what We DON\'T recommend), press "q".');
     a = readline.keyIn();
     let tg = move(maze, where, a, life);
     if (tg !== undefined) {

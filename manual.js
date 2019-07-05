@@ -13,7 +13,7 @@ const manual = () => {
   console.log('\n M - Open the game\'s manual.');
   console.log('\n V - Validate. You can use when you are at the exit of the labirinth.');
   console.log('\n Q - Quit game.');
-  console.log('\n Don\'t waist your Time!');
+  console.log('\n Don\'t waste your Time!');
   console.log('\n\n\n This game was made by Gabi, Martin & Tibi.');
 };
 console.log(manual());
