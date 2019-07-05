@@ -3,6 +3,7 @@ let mx = 0;
 
 const seeUp = (maze, x, y) => {
   if (Number(maze[x - 1][y].value) !== 1) {
+    console.log(x, y);
     if (maze[x - 1][y].value === 'x') {
       mx = x - 1;
       my = y;
@@ -17,6 +18,7 @@ const seeUp = (maze, x, y) => {
 
 const seeDown = (maze, x, y) => {
   if (Number(maze[x + 1][y].value) !== 1) {
+    console.log(x, y);
     if (maze[x + 1][y].value === 'x') {
       mx = x + 1;
       my = y;
@@ -31,6 +33,7 @@ const seeDown = (maze, x, y) => {
 
 const seeLeft = (maze, x, y) => {
   if (Number(maze[x][y - 1].value) !== 1) {
+    console.log(x, y);
     if (maze[x][y - 1].value === 'x') {
       mx = x;
       my = y - 1;
@@ -45,6 +48,7 @@ const seeLeft = (maze, x, y) => {
 
 const seeRight = (maze, x, y) => {
   if (Number(maze[x][y + 1].value) !== 1) {
+    console.log(x, y);
     if (maze[x][y + 1].value === 'x') {
       mx = x;
       my = y + 1;
