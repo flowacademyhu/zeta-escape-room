@@ -2,13 +2,19 @@ const manual = () => {
   console.clear();
   console.log('Escape-room Manual');
   console.log('\n\n Rules: You wake up in a maze. Your goal is escape from the maze, but you will need a password to be able to do that. \n Your starting life is 10.');
-  console.log('There are many objects in the game: \n TO - Torch: ');
+  console.log('There are many objects in the game: \n\n TO - Torch: It can show you a larger space the usual.');
+  console.log('\n F - Food. It adds you an extra life.');
+  console.log('\n T - Trap. It decreases your life by one.');
+  console.log('\n H - Hint. It gives you a letter of the password. You have to collect all of the Hints.');
   console.log('\n\n BASIC keybindings: \n');
   console.log(' W - Move up \n S - Move Down \n A - Move Left \n D - Move Right');
   console.log('\n\n H - Open your hints.');
+  console.log('\n !!!Try to avoid the ghost. The meeting will cost you one life!!!');
   console.log('\n M - Open the game\'s manual.');
+  console.log('\n V - Validate. You can use when you are at the exit of the labirinth.');
   console.log('\n Q - Quit game.');
+  console.log('\n Don\'t waist your Time!');
   console.log('\n\n\n This game was made by Gabi, Martin & Tibi.');
 };
-
+console.log(manual());
 module.exports = manual;
