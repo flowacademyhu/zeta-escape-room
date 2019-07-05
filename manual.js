@@ -2,7 +2,7 @@ const manual = () => {
   console.clear();
   console.log('Escape-room Manual');
   console.log('\n\n Rules: You wake up in a maze. Your goal is escape from the maze, but you will need a password to be able to do that. \n Your starting life is 10.');
-  console.log('There are many objects in the game: \n\n TO - Torch: It can show you a larger space the usual.');
+  console.log('\n There are many objects in the game: \n\n TO - Torch: It gives you extra vision.');
   console.log('\n F - Food. It adds you an extra life.');
   console.log('\n T - Trap. It decreases your life by one.');
   console.log('\n H - Hint. It gives you a letter of the password. You have to collect all of the Hints.');

@@ -32,7 +32,7 @@ const main = () => {
   trapGen(maze);
   hintGen(maze);
   foodGen(maze);
-  let life = { life: 10 };
+  let life = { life: 5 };
   let torchLife = { life: 3 };
 
   let a;
@@ -58,6 +58,7 @@ const main = () => {
     vision.vision(maze, where, torchLife);
     hintStash(maze, where, pw, foundHints, password);
     if (a === 'h') {
+      console.clear();
       console.log('Found Hints:');
       console.log('\n(The hints below are not in the right sequence.)');
       hintBoard(foundHints);

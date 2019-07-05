@@ -6,6 +6,7 @@ const foodGen = (maze) => {
     let b = Math.floor(Math.random() * (maze.length - 1));
     if (maze[a][b].value === '0') {
       maze[a][b].value = 'F';
+      maze[a][b].visibility = true;
       food[n] = [a, b];
       n++;
     }

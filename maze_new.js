@@ -29,6 +29,8 @@ const labBackground = (array) => {
         term.bgYellow('TO');
       } else if (array[i][j].value === 'H') {
         term.bgBlue(' H');
+      } else if (array[i][j].value === 'F') {
+        term.bgBrightYellow(' F');
       } else if (array[i][j].value === 'E') {
         term.bgGreen('EX');
       } else if (Number(array[i][j].value) === 0 && array[i][j].visibility === true) {
