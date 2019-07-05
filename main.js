@@ -36,7 +36,7 @@ const main = () => {
   let torchLife = { life: 3 };
 
   let a;
-  let where = [2, 33];
+  let where = [1, 1];
   console.clear();
 
   let gx = maze.length - 2;
