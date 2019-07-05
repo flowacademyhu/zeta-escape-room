@@ -201,32 +201,30 @@ const ghostRandom = (maze, x, y) => {
 };
 
 const ghostTargeted = (maze, x, y) => {
-  while (x !== mx) {
-    if (x < mx) {
-      maze[x][y] = vtemp;
-      x = x + 1;
-      vtemp = maze[x][y].value;
-      maze[x][y] = 'G';
-    } else if (x > mx) {
-      maze[x][y] = vtemp;
-      x = x - 1;
-      vtemp = maze[x][y].value;
-      maze[x][y] = 'G';
-    }
+  if (x < mx) {
+    maze[x][y] = vtemp;
+    x = x + 1;
+    vtemp = maze[x][y].value;
+    maze[x][y] = 'G';
+  } else if (x > mx) {
+    maze[x][y] = vtemp;
+    x = x - 1;
+    vtemp = maze[x][y].value;
+    maze[x][y] = 'G';
   }
-  while (y !== my) {
-    if (y < my) {
-      maze[x][y] = vtemp;
-      y = y + 1;
-      vtemp = maze[x][y].value;
-      maze[x][y] = 'G';
-    } else if (y > my) {
-      maze[x][y] = vtemp;
-      y = y - 1;
-      vtemp = maze[x][y].value;
-      maze[x][y] = 'G';
-    }
+
+  if (y < my) {
+    maze[x][y] = vtemp;
+    y = y + 1;
+    vtemp = maze[x][y].value;
+    maze[x][y] = 'G';
+  } else if (y > my) {
+    maze[x][y] = vtemp;
+    y = y - 1;
+    vtemp = maze[x][y].value;
+    maze[x][y] = 'G';
   }
+
   return { x, y };
 };
 
