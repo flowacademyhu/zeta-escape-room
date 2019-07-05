@@ -82,7 +82,7 @@ const ghostNeighbor = (maze, x, y) => {
     ma[i] = 1;
     i++;
   }
-  if (Number(maze[x + 1][y].value ) !== 1) {
+  if (Number(maze[x + 1][y].value) !== 1) {
     ma[i] = 2;
     i++;
   }
@@ -99,7 +99,7 @@ let n = 0;
 let atemp = 0;
 let vtemp = '0';
 let vstemp = false;
-const ghostRandom = (maze, x, y) => {
+const ghostRandom = (maze, x, y, life) => {
   let ma = ghostNeighbor(maze, x, y);
   let r = 0;
   let a = Math.floor(Math.random() * ma.length);
@@ -139,6 +139,7 @@ const ghostRandom = (maze, x, y) => {
         maze[x][y].value = 'G';
         maze[x][y].visibility = true;
       } else {
+        life.life--;
         return resetGhost(maze, x, y);
       }
     }
@@ -153,6 +154,7 @@ const ghostRandom = (maze, x, y) => {
         maze[x][y].value = 'G';
         maze[x][y].visibility = true;
       } else {
+        life.life--;
         return resetGhost(maze, x, y);
       }
     }
@@ -167,6 +169,7 @@ const ghostRandom = (maze, x, y) => {
         maze[x][y].value = 'G';
         maze[x][y].visibility = true;
       } else {
+        life.life--;
         return resetGhost(maze, x, y);
       }
     }
@@ -181,6 +184,7 @@ const ghostRandom = (maze, x, y) => {
         maze[x][y].value = 'G';
         maze[x][y].visibility = true;
       } else {
+        life.life--;
         return resetGhost(maze, x, y);
       }
     }
@@ -262,5 +266,6 @@ module.exports = {
   ghostNeighbor,
   ghostRandom,
   ghostTargeted,
-  hidegHost
+  hidegHost,
+  resetGhost
 };

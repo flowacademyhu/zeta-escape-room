@@ -48,7 +48,11 @@ const main = () => {
     // gen.rawDraw(maze);
     console.log('\n Life:' + life.life);
     a = readline.keyIn();
-    move(maze, where, a, life);
+    let tg = move(maze, where, a, life);
+    if (tg !== undefined) {
+      gx = tg[0];
+      gy = tg[1];
+    }
     vision.vision(maze, where, torchLife);
     hintStash(maze, where, pw, foundHints, password);
     if (a === 'h') {
@@ -80,7 +84,7 @@ const main = () => {
     /* if (ghost.ghostSee(maze, gx, gy)) {
       ghost.ghostTargeted(maze, gx, gy);
     } else { */
-    let arr = ghost.ghostRandom(maze, gx, gy);
+    let arr = ghost.ghostRandom(maze, gx, gy, life);
     gx = arr[0];
     gy = arr[1];
     // }
