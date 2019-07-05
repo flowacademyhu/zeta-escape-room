@@ -36,7 +36,7 @@ const main = () => {
   let torchLife = { life: 3 };
 
   let a;
-  let where = [1, 1];
+  let where = [2, 33];
   console.clear();
 
   let gx = maze.length - 2;
@@ -61,7 +61,6 @@ const main = () => {
     console.log('\n Life:' + life.life);
     a = readline.keyIn();
     console.clear();
-    console.log(where);
     move(maze, where, a, life);
     if (a === 'h') {
       console.log('Found Hints:');
@@ -74,7 +73,11 @@ const main = () => {
     if (a === 'q') {
       process.exit();
     }
-    if (a === 'v' && (maze[3][maze.length - 2].value === 'x' || maze[4][maze.length - 2] === 'x')) {
+    if (a === 'v' && maze[3][maze.length - 2].value === 'x') {
+      console.clear();
+      validate(pw);
+    }
+    if (a === 'v' && maze[4][maze.length - 2].value === 'x') {
       console.clear();
       validate(pw);
     }
