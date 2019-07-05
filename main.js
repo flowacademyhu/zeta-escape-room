@@ -28,7 +28,7 @@ const main = () => {
   gen.mazeGen(1, 1, maze);
   maze[1][1] = { value: 'x', visibility: true };
   maze[3][maze.length - 1] = { value: 'E', visibility: true, visited: true };
-  torch.torchGen(maze, 3);
+  torch.torchGen(maze, 6);
   trapGen(maze);
   hintGen(maze);
   foodGen(maze);
