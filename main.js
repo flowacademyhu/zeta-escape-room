@@ -7,6 +7,7 @@ const main = () => {
   let ghost = require('./ghost');
   let torch = require('./torch');
   let vision = require('./vision');
+  let manual = require('./manual');
   let validate = require('./validate');
   let { hintGen, hintStash, hintBoard } = require('./hint');
   let maze = [];
@@ -65,6 +66,12 @@ const main = () => {
       console.log('Found Hints:');
       console.log('\n(The hints below are not in the right sequence.)');
       hintBoard(foundHints);
+      console.log('\n\nPress any key to return into the maze. (Except "q".)');
+      a = readline.keyIn();
+      console.clear();
+    }
+    if (a === 'm') {
+      manual();
       console.log('\n\nPress any key to return into the maze. (Except "q".)');
       a = readline.keyIn();
       console.clear();
