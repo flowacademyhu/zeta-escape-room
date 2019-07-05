@@ -27,7 +27,6 @@ const main = () => {
   gen.mazeGen(1, 1, maze);
   maze[1][1] = { value: 'x', visibility: true };
   maze[3][maze.length - 1] = { value: 'E', visibility: true, visited: true };
-  maze[4][maze.length - 1] = { value: 'E', visibility: true, visited: true };
   torch.torchGen(maze, 3);
   trapGen(maze);
   hintGen(maze);
@@ -74,10 +73,6 @@ const main = () => {
       process.exit();
     }
     if (a === 'v' && maze[3][maze.length - 2].value === 'x') {
-      console.clear();
-      validate(pw);
-    }
-    if (a === 'v' && maze[4][maze.length - 2].value === 'x') {
       console.clear();
       validate(pw);
     }
