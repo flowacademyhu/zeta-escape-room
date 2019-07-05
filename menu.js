@@ -1,13 +1,12 @@
-const menu = () => {
-  let main = require('./main');
-  let manual = require('./manual');
-  var term = require('terminal-kit').terminal;
-  var center = require('center-align');
+let main = require('./main');
+var term = require('terminal-kit').terminal;
+var center = require('center-align');
+var readline = require('readline-sync');
+let a;
 
+const menu = () => {
   let menusor = [
     'New Game',
-    'Manual',
-    'Credits',
     'Exit'
 
   ];
@@ -15,27 +14,15 @@ const menu = () => {
   menusor = center(menusor);
 
   term.singleColumnMenu(menusor, function (error, response) {
-    term('\n')(
-    );
+    if (error) {}
+    term('\n');
     if (response.selectedIndex === 0) {
       main();
     } else if (response.selectedIndex === 1) {
-      manual();
-    } else if (response.selectedIndex === 1) {
-      console.log('credits');
-    } else if (response.selectedIndex === 2) {
       console.log();
+      process.exit();
     }
-    process.exit();
   });
 };
 
-const back2menu = () => {
-  menu();
-};
-
 menu();
-module.exports = {
-  back2menu,
-  menu
-};
