@@ -21,8 +21,6 @@ const move = (arr, where, a, life) => {
       if (arr[x][y].used === false) {
         arr[x][y].torch = true;
       }
-    } else {
-
     }
   } else if (a === 's') { // le
     if (x < arr.length - 1 && Number(arr[x + 1][y].value) !== 1) {
@@ -43,8 +41,6 @@ const move = (arr, where, a, life) => {
       if (arr[x][y].used === false) {
         arr[x][y].torch = true;
       }
-    } else {
-
     }
   } else if (a === 'd') { // jobbra
     if ((y === arr.length - 2 && x === 3) || (y === arr.length - 2 && x === 4)) {
@@ -66,8 +62,6 @@ const move = (arr, where, a, life) => {
       if (arr[x][y].used === false) {
         arr[x][y].torch = true;
       }
-    } else {
-
     }
   } else if (a === 'a') { // balra
     if (y > 1 && Number(arr[x][y - 1].value) !== 1) {
@@ -88,8 +82,6 @@ const move = (arr, where, a, life) => {
       if (arr[x][y].used === false) {
         arr[x][y].torch = true;
       }
-    } else {
-
     }
   }
 
