@@ -3,13 +3,12 @@ let mx = 0;
 
 const seeUp = (maze, x, y) => {
   if (Number(maze[x - 1][y].value) !== 1) {
-    console.log(x, y);
     if (maze[x - 1][y].value === 'x') {
       mx = x - 1;
       my = y;
       return true;
     } else {
-      seeUp(maze, x - 1, y);
+      seeUp(maze, (x - 1), y);
     }
   } else {
     return false;
@@ -18,13 +17,12 @@ const seeUp = (maze, x, y) => {
 
 const seeDown = (maze, x, y) => {
   if (Number(maze[x + 1][y].value) !== 1) {
-    console.log(x, y);
     if (maze[x + 1][y].value === 'x') {
       mx = x + 1;
       my = y;
       return true;
     } else {
-      seeDown(maze, x + 1, y);
+      seeDown(maze, (x + 1), y);
     }
   } else {
     return false;
@@ -33,13 +31,12 @@ const seeDown = (maze, x, y) => {
 
 const seeLeft = (maze, x, y) => {
   if (Number(maze[x][y - 1].value) !== 1) {
-    console.log(x, y);
     if (maze[x][y - 1].value === 'x') {
       mx = x;
       my = y - 1;
       return true;
     } else {
-      seeLeft(maze, x, y - 1);
+      seeLeft(maze, x, (y - 1));
     }
   } else {
     return false;
@@ -47,14 +44,13 @@ const seeLeft = (maze, x, y) => {
 };
 
 const seeRight = (maze, x, y) => {
-  if (Number(maze[x][y + 1].value) !== 1) {
-    console.log(x, y);
+  if (Number(maze[x][y + 1].value) !== 1 && maze[x][y + 1].value !== 'E') {
     if (maze[x][y + 1].value === 'x') {
       mx = x;
       my = y + 1;
       return true;
     } else {
-      seeRight(maze, x, y + 1);
+      seeRight(maze, x, (y + 1));
     }
   } else {
     return false;
@@ -62,10 +58,21 @@ const seeRight = (maze, x, y) => {
 };
 
 const ghostSee = (maze, x, y) => {
-  seeUp(maze, x, y);
-  seeDown(maze, x, y);
-  seeLeft(maze, x, y);
-  seeRight(maze, x, y);
+  let res = false;
+  res = seeUp(maze, x, y);
+  if (res) {
+    return res;
+  }
+  res = seeDown(maze, x, y);
+  if (res) {
+    return res;
+  }
+  res = seeLeft(maze, x, y);
+  if (res) {
+    return res;
+  }
+  res = seeRight(maze, x, y);
+  return res;
 };
 
 const ghostNeighbor = (maze, x, y) => {
@@ -75,7 +82,7 @@ const ghostNeighbor = (maze, x, y) => {
     ma[i] = 1;
     i++;
   }
-  if (Number(maze[x + 1][y].value) !== 1) {
+  if (Number(maze[x + 1][y].value ) !== 1) {
     ma[i] = 2;
     i++;
   }
@@ -93,8 +100,6 @@ let atemp = 0;
 let vtemp = '0';
 let vstemp = false;
 const ghostRandom = (maze, x, y) => {
-  // maze[x][y].value = 'G';
-  // maze[x][y].visibility = true;
   let ma = ghostNeighbor(maze, x, y);
   let r = 0;
   let a = Math.floor(Math.random() * ma.length);
@@ -124,7 +129,7 @@ const ghostRandom = (maze, x, y) => {
     }
   }
   if (a === 1) { // fel
-    if (x > 1 && Number(maze[x - 1][y].value) !== 1) {
+    if (x > 1 && Number(maze[x - 1][y].value) !== 1 && maze[x - 1][y].value !== 'E') {
       if (maze[x - 1][y].value !== 'x') {
         maze[x][y].value = vtemp;
         maze[x][y].visibility = vstemp;
@@ -134,16 +139,11 @@ const ghostRandom = (maze, x, y) => {
         maze[x][y].value = 'G';
         maze[x][y].visibility = true;
       } else {
-        maze[x][y] = { value: 'x', visibility: true };
-        x = x - 1;
-        vtemp = maze[x][y].value;
-        vstemp = maze[x][y].visibility;
-        maze[x][y].value = 'G';
-        maze[x][y].visibility = true;
+        return resetGhost(maze, x, y);
       }
     }
   } else if (a === 2) { // le
-    if (x < maze.length - 1 && Number(maze[x + 1][y].value) !== 1) {
+    if (x < maze.length - 1 && Number(maze[x + 1][y].value) !== 1 && maze[x + 1][y].value !== 'E') {
       if (maze[x + 1][y].value !== 'x') {
         maze[x][y].value = vtemp;
         maze[x][y].visibility = vstemp;
@@ -153,16 +153,11 @@ const ghostRandom = (maze, x, y) => {
         maze[x][y].value = 'G';
         maze[x][y].visibility = true;
       } else {
-        maze[x][y] = { value: 'x', visibility: true };
-        x = x + 1;
-        vtemp = maze[x][y].value;
-        vstemp = maze[x][y].visibility;
-        maze[x][y].value = 'G';
-        maze[x][y].visibility = true;
+        return resetGhost(maze, x, y);
       }
     }
   } else if (a === 3) { // jobbra
-    if (y < maze[x].length - 1 && Number(maze[x][y + 1].value) !== 1) {
+    if (y < maze[x].length - 1 && Number(maze[x][y + 1].value) !== 1 && maze[x][y + 1].value !== 'E') {
       if (maze[x][y + 1].value !== 'x') {
         maze[x][y].value = vtemp;
         maze[x][y].visibility = vstemp;
@@ -172,16 +167,11 @@ const ghostRandom = (maze, x, y) => {
         maze[x][y].value = 'G';
         maze[x][y].visibility = true;
       } else {
-        maze[x][y] = { value: 'x', visibility: true };
-        y = y + 1;
-        vtemp = maze[x][y].value;
-        vstemp = maze[x][y].visibility;
-        maze[x][y].value = 'G';
-        maze[x][y].visibility = true;
+        return resetGhost(maze, x, y);
       }
     }
   } else if (a === 4) { // balra
-    if (y > 1 && Number(maze[x][y - 1].value) !== 1) {
+    if (y > 1 && Number(maze[x][y - 1].value) !== 1 && maze[x][y + 1].value !== 'E') {
       if (maze[x][y - 1].value !== 'x') {
         maze[x][y].value = vtemp;
         maze[x][y].visibility = vstemp;
@@ -191,12 +181,7 @@ const ghostRandom = (maze, x, y) => {
         maze[x][y].value = 'G';
         maze[x][y].visibility = true;
       } else {
-        maze[x][y] = { value: 'x', visibility: true };
-        y = y - 1;
-        vtemp = maze[x][y].value;
-        vstemp = maze[x][y].visibility;
-        maze[x][y].value = 'G';
-        maze[x][y].visibility = true;
+        return resetGhost(maze, x, y);
       }
     }
   }
@@ -235,6 +220,12 @@ const ghostTargeted = (maze, x, y) => {
 const hidegHost = (maze, x, y) => {
   maze[x][y].value = vtemp;
   maze[x][y].visibility = vstemp;
+};
+
+const resetGhost = (maze, x, y) => {
+  maze[x][y].value = vtemp;
+  maze[x][y].visibility = vstemp;
+  return [maze.length - 2, maze[maze.length - 2].length - 2];
 };
 
 /* const ghostMove = (maze, x, y) => {

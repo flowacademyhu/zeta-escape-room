@@ -1,5 +1,15 @@
-let readline = require('readline-sync');
 var term = require('terminal-kit').terminal;
+const rawDraw = (matrix) => {
+  for (let i = 0; i < matrix.length; i++) {
+    let row = '';
+    for (let j = 0; j < matrix[i].length; j++) {
+      row += matrix[i][j].value;
+    }
+    console.log(row);
+  }
+  console.log();
+};
+
 const labBackground = (array) => {
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array[i].length; j++) {
@@ -168,5 +178,6 @@ module.exports = {
   fill2d: fill2d,
   neighbour: neighbour,
   mazeGen: mazeGen,
-  labBackground: labBackground
+  labBackground: labBackground,
+  rawDraw
 };
