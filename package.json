@@ -20,6 +20,6 @@
     "axel": "0.0.3",
     "center-align": "^1.0.1",
     "readline-sync": "^1.4.9",
-    "terminal-kit": "^1.28.2"
+    "terminal-kit": "^1.49.4"
   }
 }
